@@ -5,13 +5,13 @@
 Turn off Execution Policy Temporarily
 `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process`
 
-Create a Virtual Environment
+Create a Virtual Environment  
 `py -m venv env`
 
-Activate the Virtual Environment
+Activate the Virtual Environment  
 `env\Scripts\Activate.ps1`
 
-Deactivate the Virtual Envirtonment
+Deactivate the Virtual Envirtonment  
 `deactivate`
 
 # Install Django
