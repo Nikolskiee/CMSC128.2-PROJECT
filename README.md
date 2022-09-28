@@ -27,4 +27,7 @@ Dependencies are installed using `pip`
 ## To install dependencies using **requirements.txt**
 `pip install -r requirements.txt`
 
+# To deploy the PROJECT locally
+`py manage.py runserver`
+
 
