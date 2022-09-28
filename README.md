@@ -2,7 +2,7 @@
 
 # Setting Up Virtual Environment
 ## On Windows Powershell
-Turn off Execution Policy Temporarily
+Turn off Execution Policy Temporarily  
 `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process`
 
 Create a Virtual Environment  
