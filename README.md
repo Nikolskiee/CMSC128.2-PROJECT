@@ -17,3 +17,14 @@ Deactivate the Virtual Envirtonment
 # Install Django
 `pip install django`
 
+# Go inside the PROJECT
+`cd seirvice`
+
+# Dependencies
+Dependencies are installed using `pip`  
+## To add dependencies on **requirements.txt**  
+`pip freeze > requirements.txt`
+## To install dependencies using **requirements.txt**
+`pip install -r requirements.txt`
+
+
