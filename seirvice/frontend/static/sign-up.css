@@ -1,3 +1,25 @@
+html {
+	font-family: Inter;
+	font-size: 16px;
+}
+
+body {
+	background-image: url("/static/bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	font-weight: 400;
+	font-style:normal;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: normal;
+	line-height: 1.15;
+	color: var(--dl-color-gray-black);
+	/*background-color: var(--dl-color-gray-white);*/
+
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -7,16 +29,21 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .sign-up-container {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-self: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+	display: flex;
+	align-self: center;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	border-radius: 15px;
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+	margin-top: 3%;
+	margin-bottom: 3%;
+	size: 50%;
 }
+
 .sign-up-form {
   position: relative;
 }
@@ -119,6 +146,18 @@
   text-decoration: none;
   background-color: transparent;
 }
+
+.simpleLink {
+	text-decoration: none;
+	color: inherit;
+	font-weight:bolder;
+}
+
+.simpleLink:hover {
+	text-decoration: none;
+	color: lightseagreen;
+}
+
 @media(max-width: 479px) {
   .sign-up-form {
     width: 100%;
