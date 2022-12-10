@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <title>SEIR-V</title>
@@ -33,11 +34,11 @@
     />
     <!--This is the head section-->
     <!-- <style> ... </style> -->
-    <link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
   </head>
   <body>
     <div>
-      <link href="./login.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}"/>
 
       <div class="container">
         <div class="login-container">
@@ -69,15 +70,17 @@
             />
             <span class="login-text5 forgotPass">I Forgot My Password</span>
             <a
-              href="simulation.html"
+              href="{% url 'home' %}"
               id="loginBtn"
               name="login"
               class="login-navlink button"
             >
               LOGIN
             </a>
-            <a href="index.html" class="login-navlink1 textBtn">
-              No account yet? Sign up
+            <a href="{% url 'home' %}" class="login-navlink1 textBtn">
+			<a href="{% url 'signup' %}" class="simpleLink">
+				<b>No account yet? Sign up</b>
+			</a>
             </a>
           </form>
         </div>

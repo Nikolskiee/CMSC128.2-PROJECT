@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,11 +34,11 @@
     />
     <!--This is the head section-->
     <!-- <style> ... </style> -->
-    <link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
   </head>
   <body>
     <div>
-      <link href="./simulation.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="{% static 'simulation.css' %}"/>
 
       <div class="simulation-container">
         <header data-thq="thq-navbar" class="simulation-navbar-interactive">
@@ -57,7 +58,7 @@
               class="simulation-nav"
             >
               <span class="menuOptions">Dashboard</span>
-              <a href="history.html" class="simulation-navlink menuOptions">
+              <a href="{% url 'history' %}" class="simulation-navlink menuOptions">
                 History
               </a>
               <span class="simulation-text01 menuOptions">Profile</span>
@@ -96,7 +97,7 @@
                 class="simulation-nav2"
               >
                 <span class="simulation-text02">Dashboard</span>
-                <a href="history.html" class="simulation-navlink1">History</a>
+                <a href="{% url 'history' %}" class="simulation-navlink1">History</a>
                 <span class="simulation-text03">Profile</span>
               </nav>
             </div>

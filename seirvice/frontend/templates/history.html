@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <title>SEIR-V</title>
@@ -33,11 +34,11 @@
     />
     <!--This is the head section-->
     <!-- <style> ... </style> -->
-    <link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
   </head>
   <body>
     <div>
-      <link href="./history.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="{% static 'history.css' %}"/>
 
       <div class="history-container">
         <header data-thq="thq-navbar" class="history-navbar-interactive">
@@ -56,7 +57,7 @@
               data-role="Nav"
               class="history-nav"
             >
-              <a href="simulation.html" class="history-navlink menuOptions">
+              <a href={% url 'home' %} class="history-navlink menuOptions">
                 Dashboard
               </a>
               <span class="history-text menuOptions">History</span>
@@ -95,7 +96,7 @@
                 data-role="Nav"
                 class="history-nav2"
               >
-                <a href="simulation.html" class="history-text02">Dashboard</a>
+                <a href={% url 'home' %} class="history-text02">Dashboard</a>
                 <span class="history-text03">History</span>
                 <span class="history-text04">Profile</span>
               </nav>
