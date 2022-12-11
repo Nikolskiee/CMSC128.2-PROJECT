@@ -1,8 +1,8 @@
-#from django.contrib import messages
+from django.contrib import messages
 from django.shortcuts import render, redirect
-#from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-#from .forms import UserForm
+from .forms import UserForm
 
 
 # Create your views here.
@@ -16,7 +16,7 @@ def history(request):
     return render(request, 'history.html')
 
 def signup(request):
-    '''form = UserForm()
+    form = UserForm()
 
     if(request.method == "POST"):
         form = UserForm(request.POST)
@@ -26,11 +26,10 @@ def signup(request):
             return redirect('/login')
         
     data = {"form" : form}
-    return render(request, 'signup.html', data)'''
-    return render(request, 'signup.html')
+    return render(request, 'signup.html', data)
 
 def signin(request):
-    '''if(request.method == "POST"):
+    if(request.method == "POST"):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -41,5 +40,5 @@ def signin(request):
             return redirect('/')
         else:
             print("Login failed")
-            messages.error(request, "Incorrect password or username.")'''
+            messages.error(request, "Incorrect password or username.")
     return render(request, 'login.html')
