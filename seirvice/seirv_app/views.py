@@ -59,7 +59,7 @@ def plot_seirv_seir(request):
 
     N_in = 1000 # N (Total Population)
 
-    t_duration = 365 # Simulation Duration (in days)
+    t_duration = 100 # Simulation Duration (in days)
 
     R0_input = 2.4 # Basic Reproduction Number (R0)
 
@@ -337,7 +337,7 @@ def plot_dengue (request):
 
     N_v = 2000 # N (vector population: mosquitos)
 
-    t_duration = 180 # Simulation duration (in days)
+    t_duration = 100 # Simulation duration (in days)
 
     bite_n = 1 # Number of hosts a mosquito bite in a day
 
