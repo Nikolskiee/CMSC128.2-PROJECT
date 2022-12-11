@@ -46,12 +46,26 @@
               <br />
             </span>
             {{form.password1}}
+            <span class="sign-up-text05 label">
+              <span>Repeat Password</span>
+              <br />
+            </span>
+            {{form.password2}}
             <span class="sign-up-text08 label">
               <span>Role</span>
               <br />
             </span>
             {{form.profession}}
-            <button class="sign-up-navlink button">SIGN UP</button>
+            {% if form.errors %}
+                                {% for key, value in form.errors.items %}
+                                <!-- Alert -->
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error!</strong> {{value | striptags}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+            <button type="submit" class="sign-up-navlink button">SIGN UP</button>
             <a href="{% url 'login' %}" class="simpleLink">
               Already have an Account? Login
             </a><br><br>
