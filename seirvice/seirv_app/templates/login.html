@@ -25,19 +25,21 @@
 
       <div class="container">
         <div class="login-container">
-          <form id="login" name="login" class="login-form form">
+          <form id="login" name="login" class="login-form form" method="post">
+			{% csrf_token %}
             <img
               alt="image"
               src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
               class="login-image"
             />
             <span class="login-text">SEIR-V</span>
-            <span class="label">Email</span>
+            <span class="label">Username</span>
             <input
-              type="email"
-              id="email"
+              type="text"
+              id="username"
+			  name="username"
               required=""
-              placeholder="Email"
+              placeholder="Username"
               class="login-textinput input"
             />
             <span class="login-text2 label">
@@ -47,19 +49,33 @@
             <input
               type="password"
               id="password"
+			  name="password"
               required=""
               placeholder="Password"
               class="login-textinput1 input"
             />
-            <span class="login-text5 forgotPass">I Forgot My Password</span>
-            <a
-              href="{% url 'home' %}"
-              id="loginBtn"
+            <span class="login-text5 forgotPass">Forgot My Password</span>
+            <button type="submit"
               name="login"
               class="login-navlink button"
             >
               LOGIN
-            </a>
+			</button>
+			{% for message in messages %}
+				{% if 'success' == message.tags %}
+					<!-- Alert Box -->
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Success!</strong> {{message | striptags}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% else %}
+					<!-- Alert Box -->
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Error!</strong> {{message | striptags}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% endif %}
+			{% endfor %}
             <a href="{% url 'home' %}" class="login-navlink1 textBtn">
 			<a href="{% url 'signup' %}" class="simpleLink">
 				<b>No account yet? Sign up</b>
