@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Infectious Disease Model for Dengue</title>
+    </head>
+    <body>
+        {% autoescape off %}
+            {{ plot_div }}
+        {% endautoescape %}
+        <br>
+        <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Sh</th>
+                <th>Ih</th>
+                <th>Rh</th>
+                <th>Sv</th>
+                <th>Iv</th>
+                <th>Days</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if table %}
+            {% for i in table %}
+            <tr>
+                <td>{{i.Sh}}</td>
+                <td>{{i.Ih}}</td>
+                <td>{{i.Rh}}</td>
+                <td>{{i.Sv}}</td>
+                <td>{{i.Iv}}</td>
+                <td>{{i.Days}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Infectious Disease Model for Coronavirus, Influenza, and Measles</title>
+    </head>
+    <body>
+        <h1>SEIRV MODEL</h1>
+        {% autoescape off %}
+            {{ plot_seirv }}
+        {% endautoescape %}
+        <table>
+            <thead>
+                <tr>
+                    <th>S</th>
+                    <th>E</th>
+                    <th>I</th>
+                    <th>R</th>
+                    <th>V</th>
+                    <th>Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if table_seirv %}
+                {% for i in table_seirv %}
+                <tr>
+                    <td>{{i.S}}</td>
+                    <td>{{i.E}}</td>
+                    <td>{{i.I}}</td>
+                    <td>{{i.R}}</td>
+                    <td>{{i.V}}</td>
+                    <td>{{i.Days}}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        <h1>SEIR MODEL</h1>
+        {% autoescape off %}
+            {{ plot_seir }}
+        {% endautoescape %}
+        <table>
+            <thead>
+                <tr>
+                    <th>S</th>
+                    <th>E</th>
+                    <th>I</th>
+                    <th>R</th>
+                    <th>Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if table_seir %}
+                {% for i in table_seir %}
+                <tr>
+                    <td>{{i.S}}</td>
+                    <td>{{i.E}}</td>
+                    <td>{{i.I}}</td>
+                    <td>{{i.R}}</td>
+                    <td>{{i.Days}}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </body>
+</html>

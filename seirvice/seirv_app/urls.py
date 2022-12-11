@@ -6,5 +6,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.signin, name='login'),
     path('demo/', views.demo_plot_view, name='plotly-demo'),
-    path('dengue-plot/', views.plot_dengue, name='plot-dengue')
-    ]
+    path('dengue-plot/', views.plot_dengue, name='plot-dengue'),
+    path('seirv-seir-plot/', views.plot_seirv_seir, name='plot-seirv-seir')
+]
