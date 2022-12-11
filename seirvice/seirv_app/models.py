@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here
 USER_CHOICES = (
 		('Student','Student'),
-		('Teacher', 'Teacher')
+		('Doctor', 'Doctor')
 )
 
 class CustomUser(AbstractUser):
