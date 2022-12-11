@@ -6,6 +6,25 @@
   align-items: center;
   flex-direction: column;
 }
+
+.resultsButton {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+.resultsList {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.runningCandidate {
+  padding: 15px;
+}
+
 .history-navbar-interactive {
   width: 100%;
   display: flex;
@@ -231,4 +250,17 @@
   .history-ul {
     width: 100px;
   }
+}
+
+
+
+
+.resultsList {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.runningCandidate {
+  padding: 15px;
 }

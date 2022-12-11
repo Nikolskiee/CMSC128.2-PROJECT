@@ -34,6 +34,24 @@
   --dl-space-space-threeunits: 48px;
   --dl-space-space-oneandhalfunits: 24px;
 }
+
+.resultsButton {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.resultsList {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.runningCandidate {
+  padding: 15px;
+}
+
 .button {
   color: var(--dl-color-gray-black);
   display: inline-block;
@@ -199,6 +217,24 @@
   text-transform: none;
   text-decoration: none;
 }
+
+.resultsButton {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.resultsList {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.runningCandidate {
+  padding: 15px;
+}
+
 
 
 

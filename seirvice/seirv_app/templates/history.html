@@ -32,10 +32,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
       data-tag="font"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--This is the head section-->
     <!-- <style> ... </style> -->
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
   </head>
+
   <body>
     <div>
 		<link rel="stylesheet" type="text/css" href="{% static 'history.css' %}"/>
@@ -103,50 +105,105 @@
             </div>
           </div>
         </header>
-        <div class="history-container2">
-          <h1>History</h1>
-          <div class="history-container3">
-            <ul class="history-ul list">
-              <li class="list-item disease">
-                <span class="diseaseItem">DISEASE</span>
-              </li>
-              <li class="list-item disease">
-                <span class="diseaseItem">DISEASE</span>
-              </li>
-              <li class="list-item disease">
-                <span class="diseaseItem">DISEASE</span>
-              </li>
-            </ul>
-            <div class="history-container4"></div>
-            <ul class="history-ul1 list">
-              <li class="list-item userItem">
-                <span class="history-text09">Username</span>
-                <span class="history-text10">Position</span>
-                <span class="history-text11">Date</span>
-              </li>
-              <li class="list-item userItem">
-                <span class="history-text12">Username</span>
-                <span class="history-text13">Position</span>
-                <span class="history-text14">Date</span>
-              </li>
-              <li class="list-item userItem">
-                <span class="history-text15">Username</span>
-                <span class="history-text16">Position</span>
-                <span class="history-text17">Date</span>
-              </li>
-              <li class="list-item userItem">
-                <span class="history-text18">Username</span>
-                <span class="history-text19">Position</span>
-                <span class="history-text20">Date</span>
-              </li>
-              <li class="list-item userItem">
-                <span class="history-text21">Username</span>
-                <span class="history-text22">Position</span>
-                <span class="history-text23">Date</span>
-              </li>
-            </ul>
+
+        <div class="container" style="margin-top: 80px;">
+          <div class="row">
+              <div class="col-lg-3" id="fade-in" style="padding: 20px;">                  
+                  <button class="resultsButton">Disease 1</button>
+                  <button class="resultsButton">Disease 2</button>
+                  <button class="resultsButton">Disease 3</button>
+                  <button class="resultsButton">Disease 4</button>
+                  <button class="resultsButton">Disease 5</button>
+              </div>
+              <div class="col-lg-9" id="spaced-up-large" style="margin-top: 20px;">
+                  <p>/ Disease Name</p>
+                  <hr>
+                  <h1 id="slide-in-left">History</h1>
+
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Nursing</td>
+                        <td>December 11, 2022</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Pedia</td>
+                        <td>December 3, 2022</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Lizel</td>
+                        <td>ICU</td>
+                        <td>November 7, 2022</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                  <!-- <p>Total Number of Voters:
+                      <b>1, 580</b>
+                  </p> -->
+                  <!-- <nav style="margin-top: 40px;">
+                      {% for position in positionlist%}
+                      <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                  data-bs-target="#nav-{{position.name}}" type="button" role="tab"
+                                  aria-controls="nav-{{position.name}}"
+                                  aria-selected="true"><b>{{position.name}}</b></button>
+                              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                  data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                  aria-selected="false">Vice Chairperson</button>
+                              <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                  data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                  aria-selected="false">Councilors</button>
+                          </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="nav-{{position.name}}" role="tabpanel"
+                              aria-labelledby="nav-home-tab">
+                              <div class="row">
+                                  <div class="col-md-9" style="padding: 15px;">Name of Candidate</div>
+                                  <div class="col-md-3" style="padding: 15px; text-align: center;">Vote Count</div>
+                                  <hr>
+                                  <div class="col-md-9">
+                                      <ul style="list-style: none; padding-left: 0">
+                                          {% for candidate in candidatelist %}
+                                          {% if candidate.positionapplied.id == position.id %}
+                                          <li>{{candidate.name}}</li>
+                                          {% endif %}
+                                          {% endfor %}
+                                      </ul>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <ul class="resultsList">
+                                          {% for candidate in candidatelist %}
+                                          {% if candidate.positionapplied.id == position.id %}
+                                          <li>{{candidate.vote}}</li>
+                                          {% endif %}
+                                          {% endfor %}
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </nav> -->
+              </div>
           </div>
-        </div>
+      </div>
       </div>
     </div>
     <script
