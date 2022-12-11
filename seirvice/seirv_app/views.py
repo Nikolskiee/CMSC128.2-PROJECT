@@ -13,6 +13,8 @@ import numpy as np
 
 from .idmcomp import DengueComp
 
+import json
+
 # Create your views here.
 @login_required(login_url='/login')
 #i-uncomment niyo na lang yung login required kung bet niyo matest ibang html working pa sa user
@@ -192,7 +194,12 @@ def plot_dengue (request):
         output_type='div'
     )
 
-    return render(request, 'demo-plot.html', context={'plot_div' : plot_div})
+    # Getting the HTML needed to render the dataframe
+
+    table_frame = output_df.reset_index().to_json(orient = 'records')
+    table = json.loads(table_frame)
+
+    return render(request, 'demo-plot.html', context={'plot_div' : plot_div, 'table': table})
 
 
 def demo_plot_view(request):
