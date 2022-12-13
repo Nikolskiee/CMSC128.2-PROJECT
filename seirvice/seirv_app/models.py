@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     profession = models.CharField(max_length=100, choices=USER_CHOICES, default='Student')
 
 class InfectiousDisease(models.Model):
-	#user = models.ForeignKey(User)
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	N_in = models.FloatField()
 	t_duration = models.FloatField()
 	R0_input = models.FloatField()

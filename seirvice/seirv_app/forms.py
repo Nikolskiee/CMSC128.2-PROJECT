@@ -1,4 +1,4 @@
-from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput, CheckboxInput
+from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput, CheckboxInput, HiddenInput
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -23,8 +23,9 @@ class UserForm(UserCreationForm):
 class InfectiousDiseaseForm(ModelForm):
     class Meta:
         model = InfectiousDisease
-        fields = ['N_in', 't_duration', 'R0_input', 't_incubation', 't_infection', 'E_in', 'I_in', 'R_in', 'v_eff', 'mask_use']
+        fields = ['user', 'N_in', 't_duration', 'R0_input', 't_incubation', 't_infection', 'E_in', 'I_in', 'R_in', 'v_eff', 'mask_use']
         widgets = {
+            'user': HiddenInput(attrs={'name' : 'user'}),
             'N_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
             't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_duration', 'required' : True, 'placeholder' : 'Simulation duration'}),
             'R0_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R0_input', 'required' : True, 'placeholder' : 'R0'}),

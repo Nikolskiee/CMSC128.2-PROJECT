@@ -13,7 +13,10 @@ from .seirv import infectious_disease
 def home(request):
     form = InfectiousDiseaseForm()
     if(request.method == "POST"):
-        form = InfectiousDiseaseForm(request.POST)
+        post = request.POST.copy()
+        post['user'] = request.user.id
+        print(post['user'])
+        form = InfectiousDiseaseForm(post)
         if(form.is_valid()):
             form.save()
             params = {
