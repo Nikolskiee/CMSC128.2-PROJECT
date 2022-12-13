@@ -201,9 +201,11 @@
                 <span class="simulation-text04 label">Mask use {{form.mask_use}}</span>
               </div>
             </div>
+            {% if not hide_simulate %}
             <button type="submit" class="simulation-button button">
               SIMULATE
             </button>
+            {% endif %}
           </form>
         </div>
         <div class="simulation-container07 line"></div>

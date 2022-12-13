@@ -54,7 +54,27 @@ def signin(request):
     return render(request, 'login.html')
 
 @login_required
-def infectiousDisease(request):
+def infectiousDisease(request, pk=''):
+    if pk != '':
+        history_inst = InfectiousDisease.objects.get(id=pk)
+        form = InfectiousDiseaseForm(instance=history_inst)
+        params = {
+                'N_in' : history_inst.N_in,
+                't_duration' : history_inst.t_duration,
+                'R0_input' : history_inst.R0_input,
+                't_incubation' : history_inst.t_incubation,
+                't_infection' : history_inst.t_infection,
+                'E_in' : history_inst.E_in,
+                'I_in' : history_inst.I_in,
+                'R_in' : history_inst.R_in,
+                'v_eff' : history_inst.v_eff,
+                'mask_use' : history_inst.mask_use
+            }
+        context = infectious_disease(params)
+        context.update({"form" : form})
+        context.update({'hide_simulate': True})
+        return render(request, 'simulation.html', context=context)
+
     form = InfectiousDiseaseForm()
     if(request.method == "POST"):
         post = request.POST.copy()
@@ -76,6 +96,7 @@ def infectiousDisease(request):
             }
             context = infectious_disease(params)
             context.update({"form" : form})
+            context.update({'hide_simulate': False})
             return render(request, 'simulation.html', context=context)
 
             
@@ -85,7 +106,27 @@ def infectiousDisease(request):
     return render(request, 'simulation.html', data)
 
 @login_required
-def dengueDisease(request):
+def dengueDisease(request, pk=''):
+    if pk != '':
+        history_inst = Dengue.objects.get(id=pk)
+        form = DengueForm(instance=history_inst)
+        params = {
+                'N_h' : history_inst.N_h,
+                'N_v' : history_inst.N_v,
+                't_duration' : history_inst.t_duration,
+                'bite_n' : history_inst.bite_n,
+                'bv_input' : history_inst.bv_input,
+                'bh_input' : history_inst.bh_input,
+                'uv_input' : history_inst.uv_input,
+                'h_recov_input' : history_inst.h_recov_input,
+                'Ih_in' : history_inst.Ih_in,
+                'Rh_in' : history_inst.Rh_in,
+                'Iv_in' : history_inst.Iv_in
+            }
+        context = dengue(params)
+        context.update({"form" : form})
+        context.update({'hide_simulate': True})
+        return render(request, 'dengue.html', context=context)
     form = DengueForm()
     if(request.method == "POST"):
         post = request.POST.copy()
@@ -108,6 +149,7 @@ def dengueDisease(request):
             }
             context = dengue(params)
             context.update({"form" : form})
+            context.update({'hide_simulate': False})
             return render(request, 'dengue.html', context=context)
 
             

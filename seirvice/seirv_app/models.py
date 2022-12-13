@@ -22,6 +22,7 @@ class InfectiousDisease(models.Model):
 	R_in = models.FloatField()
 	v_eff = models.FloatField()
 	mask_use = models.BooleanField()
+	created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Dengue(models.Model):
@@ -37,4 +38,5 @@ class Dengue(models.Model):
 	Ih_in = models.FloatField()
 	Rh_in = models.FloatField()
 	Iv_in = models.FloatField()
+	created_at = models.DateTimeField(auto_now_add=True)
 	
