@@ -41,15 +41,18 @@ class InfectiousDiseaseForm(ModelForm):
 class DengueForm(ModelForm):
     class Meta:
         model = Dengue
-        fields = ['user', 'N_h', 'N_v', 't_duration', 'bite_n', 'bv_input', 'bh_input', 'uv_input', 'h_recov_input']
+        fields = ['user', 'N_h', 'N_v', 't_duration', 'bite_n', 'bv_input', 'bh_input', 'uv_input', 'h_recov_input', 'Ih_in', 'Rh_in', 'Iv_in']
         widgets = {
             'user': HiddenInput(attrs={'name' : 'user'}),
-            'N_h' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}), 
-            'N_v' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}), 
-            't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
-            'bite_n' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
-            'bv_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
-            'bh_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
-            'uv_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
-            'h_recov_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'})
+            'N_h' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N (host population)'}), 
+            'N_v' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N (vector population: mosquitos)'}), 
+            't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Simulation duration (in days)'}),
+            'bite_n' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Number of hosts a mosquito bite in a day'}),
+            'bv_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Probability of infection (host to vector)'}),
+            'bh_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Probability of infection (vector to host)'}),
+            'uv_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Vector mortality rate'}),
+            'h_recov_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'Recovery rate from dengue in humans'}),
+            'Ih_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'Ih_in', 'required' : True, 'placeholder' : 'Initial infected host population'}),
+            'Rh_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'Rh_in', 'required' : True, 'placeholder' : 'Initial recovered host population'}),
+            'Iv_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'Iv_in', 'required' : True, 'placeholder' : 'Initial infected vector population'})
         }

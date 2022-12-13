@@ -34,4 +34,7 @@ class Dengue(models.Model):
 	bh_input = models.FloatField()
 	uv_input = models.FloatField()
 	h_recov_input = models.FloatField()
+	Ih_in = models.FloatField()
+	Rh_in = models.FloatField()
+	Iv_in = models.FloatField()
 	

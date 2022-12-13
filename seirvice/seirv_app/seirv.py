@@ -315,11 +315,11 @@ def dengue(data):
 
     # Initial State Inputs:
 
-    Ih_in = 1 # Initial infected host population
+    Ih_in = float(data['Ih_in']) # Initial infected host population
 
-    Rh_in = 0 # Initial recovered host population
+    Rh_in = float(data['Rh_in']) # Initial recovered host population
 
-    Iv_in = 1 # Initial infected vector population
+    Iv_in = float(data['Iv_in']) # Initial infected vector population
 
     y_in_dengue = model.initial_state_dengue(
         Ih_in=Ih_in,
