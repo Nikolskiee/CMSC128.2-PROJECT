@@ -9,5 +9,5 @@ urlpatterns = [
     path('infectious/<pk>', views.infectiousDisease, name='infectious-history'),
     path('dengue/', views.dengueDisease, name='dengue'),
     path('dengue/<pk>', views.dengueDisease, name='dengue-history'),
-    path('history-try/', views.history, name='history-try'),
+    path('download/<disease>/<pk>', views.download_pdf, name='download_pdf')
     ]

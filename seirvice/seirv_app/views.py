@@ -5,7 +5,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserForm, InfectiousDiseaseForm, DengueForm
 from .seirv import infectious_disease, dengue
 from .models import InfectiousDisease, Dengue
-
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+from django.http import HttpResponse
+import io
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -161,3 +164,34 @@ def dengueDisease(request, pk=''):
         'form' : form
     }
     return render(request, 'dengue.html', data)
+
+def download_pdf(request, disease, pk):
+    if disease == 'infectious':
+        data_inst = InfectiousDisease.objects.get(id=pk)
+        params = {
+                'N_in' : data_inst.N_in,
+                't_duration' : data_inst.t_duration,
+                'R0_input' : data_inst.R0_input,
+                't_incubation' : data_inst.t_incubation,
+                't_infection' : data_inst.t_infection,
+                'E_in' : data_inst.E_in,
+                'I_in' : data_inst.I_in,
+                'R_in' : data_inst.R_in,
+                'v_eff' : data_inst.v_eff,
+                'mask_use' : data_inst.mask_use
+        }
+        context = infectious_disease(params, image=True)
+        context.update({'title': 'Infectious Disease Model for Coronavirus, Influenza, and Measles'})
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'filename="simulation_output.pdf"'
+        template_path = 'pdf_template_infectious.html'
+        template = get_template(template_path)
+        html = template.render(context)
+        pdf = pisa.CreatePDF(html, dest=response)
+
+        if not pdf.err:
+            return response
+
+    if disease == 'dengue':
+        pass
+    return request

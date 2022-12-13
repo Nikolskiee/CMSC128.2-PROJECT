@@ -1,15 +1,18 @@
 from plotly.offline import plot
 import plotly.graph_objects as go
 import plotly.express as px
+import plotly.io as pio
 import pandas as pd
 from scipy.integrate import odeint
 import numpy as np
+import io
+import base64
 
 from .idmcomp import DengueComp, IdmComp
 
 import json
 
-def infectious_disease(data):
+def infectious_disease(data, image=False):
     # Inputs for each of the Parameters
 
     N_in = float(data['N_in']) # N (Total Population)
@@ -270,6 +273,23 @@ def infectious_disease(data):
 
     table_frame_seir = output2_df.reset_index().to_json(orient = 'records')
     table_seir = json.loads(table_frame_seir)
+
+    if image:
+        seirv_image = go.Figure()
+        for i in model_plot_seirv:
+            seirv_image.add_trace(i)
+        buffer_seirv = io.BytesIO()
+        pio.write_image(seirv_image, buffer_seirv, engine='kaleido')
+
+        plot_seirv = 'data:image/png;base64, ' + str(base64.b64encode(buffer_seirv.getvalue()).decode())
+
+        seir_image = go.Figure()
+        for i in model_plot_seir:
+            seir_image.add_trace(i)
+        buffer_seir = io.BytesIO()
+        pio.write_image(seir_image, buffer_seir, engine='kaleido')
+
+        plot_seir = 'data:image/png;base64, ' + str(base64.b64encode(buffer_seir.getvalue()).decode())
 
     return {
         'plot_seirv' : plot_seirv,
