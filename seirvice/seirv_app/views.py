@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, InfectiousDiseaseForm, DengueForm
 from .seirv import infectious_disease, dengue
@@ -10,13 +10,11 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 import io
 
-# Create your views here.
-@login_required(login_url='/login')
-#i-uncomment niyo na lang yung login required kung bet niyo matest ibang html working pa sa user
 
 def home(request):
-    return render(request, 'simulation.html')
+    return render(request, 'index.html')
 
+@login_required(login_url='/login')
 def history(request):
     infectious_history = InfectiousDisease.objects.filter(user=request.user.id).order_by('-id')
     dengue_history = Dengue.objects.filter(user=request.user.id).order_by('-id')
@@ -56,7 +54,12 @@ def signin(request):
             messages.error(request, "Incorrect password or username.")
     return render(request, 'login.html')
 
-@login_required
+@login_required(login_url='/login')
+def signout(request):
+    logout(request)
+    return redirect('/login')
+
+@login_required(login_url='/login')
 def infectiousDisease(request, pk=''):
     if pk != '':
         history_inst = InfectiousDisease.objects.get(id=pk)
@@ -111,7 +114,7 @@ def infectiousDisease(request, pk=''):
     }
     return render(request, 'simulation.html', data)
 
-@login_required
+@login_required(login_url='/login')
 def dengueDisease(request, pk=''):
     if pk != '':
         history_inst = Dengue.objects.get(id=pk)
@@ -167,6 +170,7 @@ def dengueDisease(request, pk=''):
     }
     return render(request, 'dengue.html', data)
 
+@login_required(login_url='/login')
 def download_pdf(request, disease, pk):
     if disease == 'infectious':
         data_inst = InfectiousDisease.objects.get(id=pk)
