@@ -93,7 +93,10 @@ def dengueDisease(request):
                 'bv_input' : request.POST.get('bv_input'),
                 'bh_input' : request.POST.get('bh_input'),
                 'uv_input' : request.POST.get('uv_input'),
-                'h_recov_input' : request.POST.get('h_recov_input')
+                'h_recov_input' : request.POST.get('h_recov_input'),
+                'Ih_in' : request.POST.get('Ih_in'),
+                'Rh_in' : request.POST.get('Rh_in'),
+                'Iv_in' : request.POST.get('Iv_in')
             }
             context = dengue(params)
             context.update({"form" : form})
