@@ -24,17 +24,17 @@ def infectious_disease(data):
     
     # Inputs for each of the Initial Values
 
-    E_in = 1 # Initial exposed population
+    E_in = float(data['E_in']) # Initial exposed population
 
-    I_in = 1 # Initial infected population
+    I_in = float(data['I_in']) # Initial infected population
 
-    R_in = 0 # Initial recovered population
+    R_in = float(data['R_in']) # Initial recovered population
 
     # Inputs for Vaccine Efficacy Parameters
 
-    v_eff = 0.6 # Vaccine efficacy or effectiveness
+    v_eff = float(data['v_eff']) # Vaccine efficacy or effectiveness
 
-    mask_use = 'Yes' # 100% Strict Mask Use
+    mask_use = bool(data['mask_use']) # 100% Strict Mask Use
 
     if mask_use == 'Yes':
         R0 = R0_input - (R0_input * 0.258)

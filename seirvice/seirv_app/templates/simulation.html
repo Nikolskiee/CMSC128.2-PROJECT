@@ -183,12 +183,22 @@
                 {{form.t_duration}}
                 <span class="simulation-text07 label">Basic Reproduction Number (R0)</span>
                 {{form.R0_input}}
-              </div>
-              <div class="simulation-container06">
                 <span class="simulation-text08 label">Incubation period (in days)</span>
                 {{form.t_incubation}}
+                <span class="simulation-text08 label">Vaccine efficacy</span>
+                {{form.v_eff}}
+
+              </div>
+              <div class="simulation-container06">              
                 <span class="simulation-text09 label">Symptomatic Infection period (in days)</span>
                 {{form.t_infection}}
+                <span class="simulation-text04 label">Initial exposed population</span>
+                {{form.E_in}}  
+                <span class="simulation-text04 label">Initial infected population</span>
+                {{form.I_in}}
+                <span class="simulation-text04 label">Initial recovered population</span>
+                {{form.R_in}}
+                <span class="simulation-text04 label">Mask use {{form.mask_use}}</span>
               </div>
             </div>
             <button type="submit" class="simulation-button button">

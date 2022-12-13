@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here
@@ -17,6 +17,11 @@ class InfectiousDisease(models.Model):
 	R0_input = models.FloatField()
 	t_incubation = models.FloatField()
 	t_infection = models.FloatField()
+	E_in  = models.FloatField()
+	I_in = models.FloatField()
+	R_in = models.FloatField()
+	v_eff = models.FloatField()
+	mask_use = models.BooleanField()
 
 
 class Dengue(models.Model):

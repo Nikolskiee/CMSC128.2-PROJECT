@@ -1,4 +1,4 @@
-from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput
+from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput, CheckboxInput
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -23,13 +23,18 @@ class UserForm(UserCreationForm):
 class InfectiousDiseaseForm(ModelForm):
     class Meta:
         model = InfectiousDisease
-        fields = ['N_in', 't_duration', 'R0_input', 't_incubation', 't_infection']
+        fields = ['N_in', 't_duration', 'R0_input', 't_incubation', 't_infection', 'E_in', 'I_in', 'R_in', 'v_eff', 'mask_use']
         widgets = {
             'N_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
             't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_duration', 'required' : True, 'placeholder' : 'Simulation duration'}),
             'R0_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R0_input', 'required' : True, 'placeholder' : 'R0'}),
             't_incubation' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_incubation', 'required' : False, 'placeholder' : 'Incubation period'}),
             't_infection' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_infection', 'required' : True, 'placeholder' : 'Symptomatic infection period'}),
+            'E_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'E_in', 'required' : True, 'placeholder' : 'Initial exposed population'}),
+            'I_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'I_in', 'required' : True, 'placeholder' : 'Initial infected population'}),
+            'R_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R_in', 'required' : True, 'placeholder' : 'Initial recovered population'}),
+            'v_eff' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'v_eff', 'required' : True, 'placeholder' : 'Vaccine efficacy'}),
+            'mask_use' : CheckboxInput()
         }
 
 class DengueForm(ModelForm):

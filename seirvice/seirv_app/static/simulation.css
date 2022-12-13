@@ -273,6 +273,12 @@
   line-height: 1.5;
   margin-bottom: 10px;
 }
+
+.simulation-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
 @media(max-width: 1200px) {
   .simulation-container02 {
     padding: 20px;
