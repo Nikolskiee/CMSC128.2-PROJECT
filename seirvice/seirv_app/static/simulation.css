@@ -19,6 +19,7 @@
   justify-content: flex-start;
   background-color: #90ee90;
 }
+
 .simulation-logo {
   height: 2rem;
 }
@@ -225,20 +226,17 @@
   margin-bottom: 10px;
 }
 .simulation-button {
-  width: 45%;
+  width: 90%;
   height: 50px;
+  /* margin-bottom: 12px; */
   display: inline-flex;
   font-size: 18px;
   font-style: normal;
-  margin-top: 20px;
-  align-items: center;
   font-weight: 700;
   border-color: #90ee90;
-  border-width: 1px;
-  border-radius: 0px;
-  margin-bottom: 20px;
   text-transform: uppercase;
   justify-content: center;
+  align-items: center;
   background-color: rgb(144, 238, 144);
 }
 .simulation-container07 {
@@ -277,6 +275,19 @@
 .simulation-checkbox {
   width: 20px;
   height: 20px;
+}
+
+.input-label {
+  font-size: 12px;
+}
+
+.nopadding {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.no-gutters {
+  padding-left: 0px;
 }
 
 @media(max-width: 1200px) {
@@ -333,6 +344,7 @@
     width: 80%;
   }
 }
+
 @media(max-width: 479px) {
   .simulation-navbar-interactive {
     padding: var(--dl-space-space-unit);

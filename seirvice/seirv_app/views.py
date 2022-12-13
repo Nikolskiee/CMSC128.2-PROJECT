@@ -225,3 +225,7 @@ def download_pdf(request, disease, pk):
         if not pdf.err:
             return response
     return request
+
+def signout(request):
+    logout(request)
+    return redirect('/')
