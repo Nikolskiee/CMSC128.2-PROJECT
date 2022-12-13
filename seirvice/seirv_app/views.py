@@ -226,6 +226,6 @@ def download_pdf(request, disease, pk):
             return response
     return request
 
-def signout(request):
-    logout(request)
-    return redirect('/')
+def about(request):
+    return render(request, 'about.html')
+

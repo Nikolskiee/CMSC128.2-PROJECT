@@ -23,5 +23,6 @@ urlpatterns = [
     path('infectious/<pk>', views.infectiousDisease, name='infectious-history'),
     path('dengue/', views.dengueDisease, name='dengue'),
     path('dengue/<pk>', views.dengueDisease, name='dengue-history'),
-    path('download/<disease>/<pk>', views.download_pdf, name='download_pdf')
+    path('download/<disease>/<pk>', views.download_pdf, name='download_pdf'),
+    path('about/', views.about, name='about')
 ]
