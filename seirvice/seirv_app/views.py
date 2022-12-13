@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, InfectiousDiseaseForm, DengueForm
 from .seirv import infectious_disease, dengue
@@ -221,3 +221,7 @@ def download_pdf(request, disease, pk):
         if not pdf.err:
             return response
     return request
+
+def signout(request):
+    logout(request)
+    return redirect('/')

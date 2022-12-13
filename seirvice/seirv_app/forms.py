@@ -1,5 +1,5 @@
-from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput, CheckboxInput, HiddenInput
-from django.contrib.auth.forms import UserCreationForm
+from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput, CheckboxInput, HiddenInput, EmailInput
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 
 
 #from django.contrib.auth.models import User
@@ -56,3 +56,11 @@ class DengueForm(ModelForm):
             'Rh_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'Rh_in', 'required' : True, 'placeholder' : 'Initial recovered host population'}),
             'Iv_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'Iv_in', 'required' : True, 'placeholder' : 'Initial infected vector population'})
         }
+
+class MyPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'required' : True ,}
+        
+        for fieldname in ['email']:
+            self.fields[fieldname].widget=EmailInput(attrs=attrs)
