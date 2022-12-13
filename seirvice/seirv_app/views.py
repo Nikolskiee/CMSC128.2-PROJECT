@@ -79,6 +79,8 @@ def infectiousDisease(request, pk=''):
     if(request.method == "POST"):
         post = request.POST.copy()
         post['user'] = request.user.id
+        if request.user.profession == 'Student':
+            post['t_incubation'] = '5.1'
         form = InfectiousDiseaseForm(post)
         if(form.is_valid()):
             form.save()
@@ -86,7 +88,7 @@ def infectiousDisease(request, pk=''):
                 'N_in' : request.POST.get('N_in'),
                 't_duration' : request.POST.get('t_duration'),
                 'R0_input' : request.POST.get('R0_input'),
-                't_incubation' : request.POST.get('t_incubation'),
+                't_incubation' : post['t_incubation'],
                 't_infection' : request.POST.get('t_infection'),
                 'E_in' : request.POST.get('E_in'),
                 'I_in' : request.POST.get('I_in'),
@@ -131,12 +133,14 @@ def dengueDisease(request, pk=''):
     if(request.method == "POST"):
         post = request.POST.copy()
         post['user'] = request.user.id
+        if request.user.profession == 'Student':
+            post['N_v']  = '20000'
         form = DengueForm(post)
         if(form.is_valid()):
             form.save()
             params = {
                 'N_h' : request.POST.get('N_h'),
-                'N_v' : request.POST.get('N_v'),
+                'N_v' : post['N_v'],
                 't_duration' : request.POST.get('t_duration'),
                 'bite_n' : request.POST.get('bite_n'),
                 'bv_input' : request.POST.get('bv_input'),

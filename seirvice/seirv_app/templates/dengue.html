@@ -179,8 +179,10 @@
               <div class="simulation-container05">
                 <span class="simulation-text05 label">N (host population)</span>
                 {{form.N_h}}
+                {% if request.user.profession == 'Doctor' %}
                 <span class="simulation-text06 label">N (vector population)</span>
                 {{form.N_v}}
+                {% endif %}
                 <span class="simulation-text07 label">Simulation duration (in days)</span>
                 {{form.t_duration}}
                 <span class="simulation-text08 label">Number of hosts a mosquito bite in a day</span>

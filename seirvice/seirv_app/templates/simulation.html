@@ -183,8 +183,10 @@
                 {{form.t_duration}}
                 <span class="simulation-text07 label">Basic Reproduction Number (R0)</span>
                 {{form.R0_input}}
+                {% if request.user.profession == 'Doctor' %}
                 <span class="simulation-text08 label">Incubation period (in days)</span>
                 {{form.t_incubation}}
+                {% endif %}
                 <span class="simulation-text08 label">Vaccine efficacy</span>
                 {{form.v_eff}}
 
