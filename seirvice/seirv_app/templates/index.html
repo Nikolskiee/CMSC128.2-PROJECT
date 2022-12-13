@@ -32,7 +32,11 @@
                     <h1 style="font-size:100px;">SEIRV</h1>
                     <hr style="width:300px; height: 12px;">
                     <h3 style="color:darkgrey">Infectious disease forecasting tool for health facilities and medical schools</h3>
-                    <button class="btn btn-primary" style="height:50px;width:200px"><b>GET STARTED</b></button>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'home' %}" class="btn btn-primary" style="font-size:large;width:200px; vertical-align:middle"><b>GET STARTED</b></a>
+                    {% else %}
+                    <a href="{% url 'signup' %}" class="btn btn-primary" style="font-size:large;width:200px; vertical-align:middle"><b>GET STARTED</b></a>
+                    {% endif %}
                 </div>
                 <div class="col-md-6">
                     <img src ="{% static 'doctor-600w.png' %}" height="100%">
