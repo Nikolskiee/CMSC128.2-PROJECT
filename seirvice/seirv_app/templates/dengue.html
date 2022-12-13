@@ -254,6 +254,44 @@
     </div>
   </form>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        {% autoescape off %}
+        {{ plot_div }}
+        {% endautoescape %}
+      </div>
+      <div class="col-6">
+        <table>
+          <thead>
+              <tr>
+                  <th>Sh</th>
+                  <th>Ih</th>
+                  <th>Rh</th>
+                  <th>Sv</th>
+                  <th>Iv</th>
+                  <th>Days</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% if table %}
+              {% for i in table %}
+              <tr>
+                  <td>{{i.Sh}}</td>
+                  <td>{{i.Ih}}</td>
+                  <td>{{i.Rh}}</td>
+                  <td>{{i.Sv}}</td>
+                  <td>{{i.Iv}}</td>
+                  <td>{{i.Days}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 
   <!-- <div class="simulation-container02">
     <div class="simulation-container03">

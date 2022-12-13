@@ -243,7 +243,77 @@
     </div>
   </form>
 
-      <div class="simulation-container02">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        {% autoescape off %}
+          {{ plot_seirv }}
+        {% endautoescape %}
+      </div>
+      <div class="col-6">
+        <table>
+          <thead>
+            <tr>
+              <th>S</th>
+              <th>E</th>
+              <th>I</th>
+              <th>R</th>
+              <th>V</th>
+              <th>Days</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if table_seirv %}
+            {% for i in table_seirv %}
+            <tr>
+              <td>{{i.S}}</td>
+              <td>{{i.E}}</td>
+              <td>{{i.I}}</td>
+              <td>{{i.R}}</td>
+              <td>{{i.V}}</td>
+              <td>{{i.Days}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        {% autoescape off %}
+          {{ plot_seir }}
+        {% endautoescape %}
+      </div>
+      <div class="col-6">
+        <table>
+          <thead>
+            <tr>
+              <th>S</th>
+              <th>E</th>
+              <th>I</th>
+              <th>R</th>
+              <th>Days</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if table_seir %}
+            {% for i in table_seir %}
+            <tr>
+              <td>{{i.S}}</td>
+              <td>{{i.E}}</td>
+              <td>{{i.I}}</td>
+              <td>{{i.R}}</td>
+              <td>{{i.Days}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
         <!-- <div class="simulation-container03">
           <h1 class="simulation-text04">Disease Name</h1>
           <form class="simulation-form simForm" action="" method="post">
@@ -284,7 +354,7 @@
           </form>
         </div> -->
 
-        <div class="simulation-container07 line"></div>
+        <!-- <div class="simulation-container07 line"></div>
         
         <div class="simulation-container08">
           <div class="simulation-container09">
@@ -366,8 +436,8 @@
             that the vaccine can accelerate COVID-19 healing and maximum
             isolation can slow the spread of COVID-19.
           </span>
-        </div>
-      </div>
+        </div> -->
+
   <script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
