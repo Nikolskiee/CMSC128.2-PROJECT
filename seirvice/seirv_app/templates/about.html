@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SEIR- V</title>
+
+    <style data-tag="reset-style-sheet">
+        html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+
+    <style data-tag="default-style-sheet">
+    html {
+      font-family: Oswald;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style:normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-gray-black);
+      background-color: var(--dl-color-gray-white);
+
+    }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'simulation.css' %}" />
+    <header data-thq="thq-navbar" class="simulation-navbar-interactive">
+        <img alt="logo" src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+          class="simulation-logo" />
+        <div data-thq="thq-navbar-nav" data-role="Nav" class="simulation-desktop-menu">
+          <nav data-thq="thq-navbar-nav-links" data-role="Nav" class="simulation-nav">
+            <span class="menuOptions">Dashboard</span>
+            <a href="{% url 'history' %}" class="simulation-navlink menuOptions">
+              History
+            </a>
+            <a href="{% url 'logout' %}" class="simulation-text01 menuOptions">Profile</a>
+          </nav>
+        </div>
+        <div data-thq="thq-burger-menu" class="simulation-burger-menu">
+          <svg viewBox="0 0 1024 1024" class="simulation-icon">
+            <path
+              d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z">
+            </path>
+          </svg>
+        </div>
+        <div data-thq="thq-mobile-menu" class="simulation-mobile-menu">
+          <div data-thq="thq-mobile-menu-nav" data-role="Nav" class="simulation-nav1">
+            <div class="simulation-container01">
+              <img alt="image" src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+                class="simulation-image" />
+              <div data-thq="thq-close-menu" class="simulation-menu-close">
+                <svg viewBox="0 0 1024 1024" class="simulation-icon2">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <nav data-thq="thq-mobile-menu-nav-links" data-role="Nav" class="simulation-nav2">
+              <span class="simulation-text02">Dashboard</span>
+              <a href="{% url 'history' %}" class="simulation-navlink1">History</a>
+              <a href="{% url 'logout' %}" class="simulation-navlink1">Profile</a>
+            </nav>
+          </div>
+        </div>
+    </header>
+    <div class="container">
+
+        <div> <!--float inside the thing-->
+            <div class="jumbotron">
+                <h1 class="display-4">About SEIR-V</h1>
+                <p class="lead"> The SEIR-V project, A collaboration between
+                    De La Salle Medical and Health Sciences Institute and University of the Philippines- Manila, 
+                    is a predictive calculating tool that aims to predict the trend of a potential epidemic.
+                    We aim to equip our health professionals to be prepared for epidemics that could be as dangerous 
+                    as COVID-19 surge that started in 2020.
+                </p>
+                <hr class="my-4">
+                <p>Please feel free to contact us for questions.</p>
+                <p class="lead">
+                  <a class="btn btn-primary btn-lg" href="https://www.linkedin.com/in/beatrice-lapuz-91094a189/" role="button">Contact us</a>
+                </p>
+              </div> 
+
+        </div>
+
+    </div>
+
+
+    
+</body>
+</html>
