@@ -25,7 +25,7 @@ def history(request):
         'infectious_history': infectious_history,
         'dengue_history': dengue_history
     }
-    return render(request, 'try-history.html', context=data)
+    return render(request, 'history.html', context=data)
 
 def signup(request):
     form = UserForm()
