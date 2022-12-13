@@ -2,7 +2,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm
+from .forms import UserForm, InfectiousDiseaseForm
+from .seirv import infectious_disease
 
 
 # Create your views here.
@@ -10,7 +11,27 @@ from .forms import UserForm
 #i-uncomment niyo na lang yung login required kung bet niyo matest ibang html working pa sa user
 
 def home(request):
-    return render(request, 'simulation.html')
+    form = InfectiousDiseaseForm()
+    if(request.method == "POST"):
+        form = InfectiousDiseaseForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            params = {
+                'N_in' : request.POST.get('N_in'),
+                't_duration' : request.POST.get('t_duration'),
+                'R0_input' : request.POST.get('R0_input'),
+                't_incubation' : request.POST.get('t_incubation'),
+                't_infection' : request.POST.get('t_infection')
+            }
+            context = infectious_disease(params)
+            context.update({"form" : form})
+            return render(request, 'simulation.html', context=context)
+
+            
+    data = {
+        'form' : form
+    }
+    return render(request, 'simulation.html', data)
 
 def history(request):
     return render(request, 'history.html')
@@ -26,6 +47,7 @@ def signup(request):
             return redirect('/login')
         
     data = {"form" : form}
+
     return render(request, 'signup.html', data)
 
 def signin(request):

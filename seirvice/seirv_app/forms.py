@@ -1,9 +1,9 @@
-from django.forms import TextInput, PasswordInput, CharField, Select
+from django.forms import TextInput, PasswordInput, CharField, Select, ModelForm, NumberInput
 from django.contrib.auth.forms import UserCreationForm
 
 
 #from django.contrib.auth.models import User
-from .models import CustomUser, USER_CHOICES
+from .models import CustomUser, USER_CHOICES, InfectiousDisease
 
 class UserForm(UserCreationForm):
     attrs = { 'class' : 'sign-up-textinput2 input', 'id' : 'floating-input', 'placeholder' : 'Enter Password', 'required' : True ,}
@@ -18,3 +18,16 @@ class UserForm(UserCreationForm):
             'username' : TextInput(attrs = { 'class' : 'sign-up-textinput1 input', 'id' : 'floating-input', 'name' : 'username', 'placeholder' : 'Enter Username', 'required' : True ,}),
             'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'sign-up-textinput1 input', 'id' : 'floating-input', 'name' : 'email', 'placeholder' : 'Enter Email', 'required' : True ,})
             }
+
+
+class InfectiousDiseaseForm(ModelForm):
+    class Meta:
+        model = InfectiousDisease
+        fields = ['N_in', 't_duration', 'R0_input', 't_incubation', 't_infection']
+        widgets = {
+            'N_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
+            't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_duration', 'required' : True, 'placeholder' : 'Simulation duration'}),
+            'R0_input' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R0_input', 'required' : True, 'placeholder' : 'R0'}),
+            't_incubation' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_incubation', 'required' : False, 'placeholder' : 'Incubation period'}),
+            't_infection' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 't_infection', 'required' : True, 'placeholder' : 'Symptomatic infection period'}),
+        }
