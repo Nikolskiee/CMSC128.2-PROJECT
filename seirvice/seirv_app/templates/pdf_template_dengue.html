@@ -24,7 +24,7 @@
         <h1>Ross Macdonald Model Projection</h1>
         <img src='{{plot_div}}' style="border: 2px; border-color: teal; border-radius: 10%;">
         <table>
-            <thead style="color: white; background-color: teal;">
+            <thead style="color: rgb(0, 0, 0); background-color: teal;">
                 <tr><b>
                     <th>Sh</th>
                     <th>Ih</th>
@@ -52,7 +52,7 @@
         </table>
     </body>
     <footer>
-        <i><p style="color: green;"> {% url 'infectious-history' i.id %} SEIR-V report | Dengue</p></i>
+        <i><p style="color: green;"> {{dengue_disease.created_at}} SEIR-V report | Dengue</p></i>
         
     </footer>
 </html>

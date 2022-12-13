@@ -188,6 +188,7 @@ def download_pdf(request, disease, pk):
         }
         context = infectious_disease(params, image=True)
         context.update({'title': 'Infectious Disease Model for Coronavirus, Influenza, and Measles'})
+        context.update({'infectious_disease': data_inst})
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'filename="simulation_output.pdf"'
         template_path = 'pdf_template_infectious.html'
@@ -215,6 +216,7 @@ def download_pdf(request, disease, pk):
             }
         context = dengue(params, image=True)
         context.update({'title': 'Infectious Disease Model for Dengue'})
+        context.update({'dengue_disease': data_inst})
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'filename="simulation_output.pdf"'
         template_path = 'pdf_template_dengue.html'
