@@ -25,6 +25,7 @@ class InfectiousDisease(models.Model):
 
 
 class Dengue(models.Model):
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	N_h = models.FloatField()
 	N_v = models.FloatField()
 	t_duration = models.FloatField()

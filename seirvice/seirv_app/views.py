@@ -76,10 +76,13 @@ def infectiousDisease(request):
     }
     return render(request, 'simulation.html', data)
 
+@login_required
 def dengueDisease(request):
     form = DengueForm()
     if(request.method == "POST"):
-        form = DengueForm(request.POST)
+        post = request.POST.copy()
+        post['user'] = request.user.id
+        form = DengueForm(post)
         if(form.is_valid()):
             form.save()
             params = {

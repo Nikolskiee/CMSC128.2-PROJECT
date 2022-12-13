@@ -41,8 +41,9 @@ class InfectiousDiseaseForm(ModelForm):
 class DengueForm(ModelForm):
     class Meta:
         model = Dengue
-        fields = ['N_h', 'N_v', 't_duration', 'bite_n', 'bv_input', 'bh_input', 'uv_input', 'h_recov_input']
+        fields = ['user', 'N_h', 'N_v', 't_duration', 'bite_n', 'bv_input', 'bh_input', 'uv_input', 'h_recov_input']
         widgets = {
+            'user': HiddenInput(attrs={'name' : 'user'}),
             'N_h' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}), 
             'N_v' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}), 
             't_duration' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'N_in', 'required' : True, 'placeholder' : 'N'}),
