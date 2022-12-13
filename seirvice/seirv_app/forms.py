@@ -6,17 +6,16 @@ from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from .models import CustomUser, USER_CHOICES, InfectiousDisease, Dengue
 
 class UserForm(UserCreationForm):
-    attrs = { 'class' : 'sign-up-textinput2 input', 'id' : 'floating-input', 'placeholder' : 'Enter Password', 'required' : True ,}
-    password1 = CharField(widget=PasswordInput(attrs=attrs))
-    password2 = CharField(widget=PasswordInput(attrs=attrs))
-    profession = CharField(widget=Select(attrs={'class' : 'sign-up-select dropdown', 'id' : 'role', 'name' : 'role'}, choices=USER_CHOICES ))
+    password1 = CharField(widget=PasswordInput(attrs={ 'class' : 'form-control form-control-lg', 'placeholder' : 'Password', 'required' : True ,}))
+    password2 = CharField(widget=PasswordInput(attrs={ 'class' : 'form-control form-control-lg', 'placeholder' : 'Confirm Password', 'required' : True ,}))
+    profession = CharField(widget=Select(attrs={'class' : 'form-select mb-4', 'name' : 'role'}, choices=USER_CHOICES ))
     
     class Meta(UserCreationForm):
         model = CustomUser
         fields = ['username', 'email', 'password1', 'password2', 'profession']
         widgets = {
-            'username' : TextInput(attrs = { 'class' : 'sign-up-textinput1 input', 'id' : 'floating-input', 'name' : 'username', 'placeholder' : 'Enter Username', 'required' : True ,}),
-            'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'sign-up-textinput1 input', 'id' : 'floating-input', 'name' : 'email', 'placeholder' : 'Enter Email', 'required' : True ,})
+            'username' : TextInput(attrs = { 'class' : 'form-control form-control-lg', 'name' : 'username', 'placeholder' : 'Username', 'required' : True ,}),
+            'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'form-control form-control-lg', 'name' : 'email', 'placeholder' : 'Email', 'required' : True ,})
             }
 
 
