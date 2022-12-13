@@ -193,5 +193,29 @@ def download_pdf(request, disease, pk):
             return response
 
     if disease == 'dengue':
-        pass
+        data_inst = Dengue.objects.get(id=pk)
+        params = {
+                'N_h' : data_inst.N_h,
+                'N_v' : data_inst.N_v,
+                't_duration' : data_inst.t_duration,
+                'bite_n' : data_inst.bite_n,
+                'bv_input' : data_inst.bv_input,
+                'bh_input' : data_inst.bh_input,
+                'uv_input' : data_inst.uv_input,
+                'h_recov_input' : data_inst.h_recov_input,
+                'Ih_in' : data_inst.Ih_in,
+                'Rh_in' : data_inst.Rh_in,
+                'Iv_in' : data_inst.Iv_in
+            }
+        context = dengue(params, image=True)
+        context.update({'title': 'Infectious Disease Model for Dengue'})
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'filename="simulation_output.pdf"'
+        template_path = 'pdf_template_dengue.html'
+        template = get_template(template_path)
+        html = template.render(context)
+        pdf = pisa.CreatePDF(html, dest=response)
+
+        if not pdf.err:
+            return response
     return request

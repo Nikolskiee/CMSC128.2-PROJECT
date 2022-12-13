@@ -298,7 +298,7 @@ def infectious_disease(data, image=False):
         'table_seir' : table_seir
     }
 
-def dengue(data):
+def dengue(data, image=False):
 
     N_h = float(data['N_h']) # N (host population)
 
@@ -462,6 +462,14 @@ def dengue(data):
     table_frame = output_df.reset_index().to_json(orient = 'records')
     table = json.loads(table_frame)
 
+    if image:
+        model_image = go.Figure()
+        for i in model_plot:
+            model_image.add_trace(i)
+        buffer = io.BytesIO()
+        pio.write_image(model_image, buffer, engine='kaleido')
+
+        plot_div= 'data:image/png;base64, ' + str(base64.b64encode(buffer.getvalue()).decode())
     return {
         'plot_div' : plot_div,
         'table' : table

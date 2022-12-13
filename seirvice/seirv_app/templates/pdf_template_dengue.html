@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 2px;
+            }
+    
+            @page {
+                size: letter;
+                margin: 1in;
+            }
+    
+        </style>
+    </head>
+    <body>
+        {{title}}
+        <h1>Ross Macdonald Model Projection</h1>
+        <img src='{{plot_div}}'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sh</th>
+                    <th>Ih</th>
+                    <th>Rh</th>
+                    <th>Sv</th>
+                    <th>Iv</th>
+                    <th>Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if table %}
+                {% for i in table %}
+                <tr>
+                    <td>{{i.Sh}}</td>
+                    <td>{{i.Ih}}</td>
+                    <td>{{i.Rh}}</td>
+                    <td>{{i.Sv}}</td>
+                    <td>{{i.Iv}}</td>
+                    <td>{{i.Days}}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </body>
+</html>
