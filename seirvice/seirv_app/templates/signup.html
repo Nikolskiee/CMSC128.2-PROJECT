@@ -10,10 +10,10 @@
   <body>
     <div class="container" style="margin-left: 0; padding-left: 0;">
       <div class="row">
-        <div class="col-xl-6 d-none d-xl-block">
-          <img src = "{% static 'doctor2-600w.png' %}" height="110%">
+        <div class="col-md-7 d-none d-xl-block">
+          <img src = "{% static 'doctor2-600w.png' %}" height="100%">
         </div>
-        <div class="col-xl-6 align-self-center">
+        <div class="col-md-5 align-self-center">
           <form action="" method="post">
             {% csrf_token %}
             <div class="card-body p-md-5 text-black">
@@ -38,6 +38,7 @@
               <div class="form-outline mb-4 no-padding"> 
                 <button type="submit" class="btn btn-primary btn-lg ms-2">Sign Up</button>
               </div>
+              <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
             </form>
             </div>
           </div>
