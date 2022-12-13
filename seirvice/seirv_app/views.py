@@ -76,6 +76,7 @@ def infectiousDisease(request, pk=''):
         context = infectious_disease(params)
         context.update({"form" : form})
         context.update({'hide_simulate': True})
+        context.update({'pk': pk})
         return render(request, 'simulation.html', context=context)
 
     form = InfectiousDiseaseForm()
@@ -131,6 +132,7 @@ def dengueDisease(request, pk=''):
         context = dengue(params)
         context.update({"form" : form})
         context.update({'hide_simulate': True})
+        context.update({'pk': pk})
         return render(request, 'dengue.html', context=context)
     form = DengueForm()
     if(request.method == "POST"):
