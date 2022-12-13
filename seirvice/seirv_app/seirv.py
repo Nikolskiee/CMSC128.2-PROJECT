@@ -286,7 +286,7 @@ def dengue(data):
 
     t_duration = float(data['t_duration']) # Simulation duration (in days)
 
-    bite_n = float(data['bite_h']) # Number of hosts a mosquito bite in a day
+    bite_n = float(data['bite_n']) # Number of hosts a mosquito bite in a day
 
     bv_input = float(data['bv_input']) # Probability of infection (host to vector)
 
