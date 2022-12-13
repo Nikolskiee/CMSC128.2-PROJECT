@@ -77,7 +77,7 @@ def infectiousDisease(request):
         if(form.is_valid()):
             form.save()
             params = {
-                'N_in' : request.POST('N_in'),
+                'N_in' : request.POST.get('N_in'),
                 't_duration' : request.POST.get('t_duration'),
                 'R0_input' : request.POST.get('R0_input'),
                 't_incubation' : request.POST.get('t_incubation'),
