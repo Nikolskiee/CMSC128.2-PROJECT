@@ -7,6 +7,10 @@ USER_CHOICES = (
 		('Doctor', 'Doctor')
 )
 
+MASK_CHOICES = (
+	('Yes', 'Yes'),
+	('No', 'No')
+)
 class CustomUser(AbstractUser):
     profession = models.CharField(max_length=100, choices=USER_CHOICES, default='Student')
 
@@ -21,7 +25,7 @@ class InfectiousDisease(models.Model):
 	I_in = models.FloatField()
 	R_in = models.FloatField()
 	v_eff = models.FloatField()
-	mask_use = models.BooleanField()
+	mask_use = models.CharField(max_length=100, choices=MASK_CHOICES, default='No')
 	created_at = models.DateTimeField(auto_now_add=True)
 
 

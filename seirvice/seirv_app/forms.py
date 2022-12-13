@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 
 
 #from django.contrib.auth.models import User
-from .models import CustomUser, USER_CHOICES, InfectiousDisease, Dengue
+from .models import CustomUser, USER_CHOICES, InfectiousDisease, Dengue, MASK_CHOICES
 
 class UserForm(UserCreationForm):
     password1 = CharField(widget=PasswordInput(attrs={ 'class' : 'form-control form-control-lg', 'placeholder' : 'Password', 'required' : True ,}))
@@ -22,6 +22,7 @@ class UserForm(UserCreationForm):
 class InfectiousDiseaseForm(ModelForm):
     class Meta:
         model = InfectiousDisease
+        mask_use : CharField(widget=Select(attrs={'class' : 'simulation-textinput input', 'name' : 'mask-use'}, choices=MASK_CHOICES))
         fields = ['user', 'N_in', 't_duration', 'R0_input', 't_incubation', 't_infection', 'E_in', 'I_in', 'R_in', 'v_eff', 'mask_use']
         widgets = {
             'user': HiddenInput(attrs={'name' : 'user'}),
@@ -33,8 +34,7 @@ class InfectiousDiseaseForm(ModelForm):
             'E_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'E_in', 'required' : True, 'placeholder' : 'Initial exposed population'}),
             'I_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'I_in', 'required' : True, 'placeholder' : 'Initial infected population'}),
             'R_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R_in', 'required' : True, 'placeholder' : 'Initial recovered population'}),
-            'v_eff' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'v_eff', 'required' : True, 'placeholder' : 'Vaccine efficacy'}),
-            'mask_use' : CheckboxInput(attrs = { 'class' : 'simulation-checkbox', 'name' : 'mask_use'})
+            'v_eff' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'v_eff', 'required' : True, 'placeholder' : 'Vaccine efficacy'})
         }
 
 class DengueForm(ModelForm):
