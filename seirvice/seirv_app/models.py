@@ -17,3 +17,15 @@ class InfectiousDisease(models.Model):
 	R0_input = models.FloatField()
 	t_incubation = models.FloatField()
 	t_infection = models.FloatField()
+
+
+class Dengue(models.Model):
+	N_h = models.FloatField()
+	N_v = models.FloatField()
+	t_duration = models.FloatField()
+	bite_n = models.FloatField()
+	bv_input = models.FloatField()
+	bh_input = models.FloatField()
+	uv_input = models.FloatField()
+	h_recov_input = models.FloatField()
+	

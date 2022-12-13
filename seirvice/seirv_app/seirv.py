@@ -280,21 +280,21 @@ def infectious_disease(data):
 
 def dengue(data):
 
-    N_h = data['N_h'] # N (host population)
+    N_h = float(data['N_h']) # N (host population)
 
-    N_v = data['N_v'] # N (vector population: mosquitos)
+    N_v = float(data['N_v']) # N (vector population: mosquitos)
 
-    t_duration = data['t_duration'] # Simulation duration (in days)
+    t_duration = float(data['t_duration']) # Simulation duration (in days)
 
-    bite_n = data['bite_h'] # Number of hosts a mosquito bite in a day
+    bite_n = float(data['bite_h']) # Number of hosts a mosquito bite in a day
 
-    bv_input = data['bv_input'] # Probability of infection (host to vector)
+    bv_input = float(data['bv_input']) # Probability of infection (host to vector)
 
-    bh_input = data['bh_input'] # Probability of infection (vector to host)
+    bh_input = float(data['bh_input']) # Probability of infection (vector to host)
 
-    uv_input = data['uv_input'] # Vector mortality rate
+    uv_input = float(data['uv_input']) # Vector mortality rate
 
-    h_recov_input = data['h_recov_input'] # Recovery rate from dengue in humans
+    h_recov_input = float(data['h_recov_input']) # Recovery rate from dengue in humans
 
     
     # Create model for dengue using the DengueComp class from IdmComp
