@@ -8,15 +8,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <title>SEIRVICE</title>
     </head>
-    <body style="background-image: url({% static 'bg1-1500w.png' %}) ;">
+    <body style="background-image: url({% static 'bg1-1500w.png' %}); background-size: 100%;">
         <nav class="navbar navbar-expand-lg navbar-light p-4" style="background-color:white; border-bottom: 1px solid #2a7fff;">
             <div class="col-md-2">
                 <img src ="{% static 'logo-1500h.png' %}" height="40px">
             </div>
             <div class="col-md-8 d-flex justify-content-center" style="padding-left: 10px">
-                <a href="" class="navbar-brand">Dashboard</a>
-                <a href="" class="navbar-brand">History</a>
-                <a href="" class="navbar-brand">About</a>
+                <a href="#" class="navbar-brand" active>Dashboard</a>
+                <a href="{% url 'history'%}" class="navbar-brand">History</a>
+                <a href="{% url 'about'%}" class="navbar-brand">About</a>
             </div>
             <div class="col-md-2">
                 {% if request.user.is_authenticated %}
@@ -50,7 +50,7 @@
                                 This infectious disease model is used to predict the spread of
                                 coronavirus, influenza, or measles.
                               </p>
-                              <a href="#" class="btn btn-primary">Use Model 1</a>
+                              <a href="{% url 'infectious'%}" class="btn btn-primary">Use Model 1</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                               <p class="card-text">
                                 This infectious disease model is used to predict the spread of dengue.
                             </p>
-                              <a href="#" class="btn btn-primary">Use Model 2</a>
+                              <a href="{% url 'dengue'%}" class="btn btn-primary">Use Model 2</a>
                             </div>
                         </div>
                     </div>
