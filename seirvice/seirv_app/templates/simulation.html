@@ -135,9 +135,9 @@
         <img src ="{% static 'logo-1500h.png' %}" height="40px">
     </div>
     <div class="col-md-8 d-flex justify-content-center" style="padding-left: 10px">
-        <a href="" class="navbar-brand">Dashboard</a>
-        <a href="" class="navbar-brand">History</a>
-        <a href="" class="navbar-brand">About</a>
+        <a href="{% url 'dashboard'%}" class="navbar-brand">Dashboard</a>
+        <a href="{% url 'history'%}" class="navbar-brand">History</a>
+        <a href="{% url 'about'%}" class="navbar-brand">About</a>
     </div>
     <div class="col-md-2">
         {% if request.user.is_authenticated %}
