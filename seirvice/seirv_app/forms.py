@@ -35,7 +35,7 @@ class InfectiousDiseaseForm(ModelForm):
             'I_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'I_in', 'required' : True, 'placeholder' : 'Initial infected population'}),
             'R_in' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'R_in', 'required' : True, 'placeholder' : 'Initial recovered population'}),
             'v_eff' : NumberInput(attrs = {'class' : 'simulation-textinput input', 'name' : 'v_eff', 'required' : True, 'placeholder' : 'Vaccine efficacy'}),
-            'mask_use' : CheckboxInput()
+            'mask_use' : CheckboxInput(attrs = { 'class' : 'simulation-checkbox', 'name' : 'mask_use'})
         }
 
 class DengueForm(ModelForm):
