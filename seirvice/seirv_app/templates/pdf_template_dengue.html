@@ -3,31 +3,36 @@
     <head>
         <style>
             table {
-                border: 1px solid black;
+                border: 1px solid teal;
                 border-collapse: collapse;
                 padding: 2px;
+                text-align: center;
+
             }
     
             @page {
                 size: letter;
                 margin: 1in;
             }
+
+            
     
         </style>
     </head>
     <body>
         {{title}}
         <h1>Ross Macdonald Model Projection</h1>
-        <img src='{{plot_div}}'>
+        <img src='{{plot_div}}' style="border: 2px; border-color: teal; border-radius: 10%;">
         <table>
-            <thead style="color: white; background-color: rgb(3, 134, 127);">
-                <tr>
+            <thead style="color: white; background-color: teal;">
+                <tr><b>
                     <th>Sh</th>
                     <th>Ih</th>
                     <th>Rh</th>
                     <th>Sv</th>
                     <th>Iv</th>
                     <th>Days</th>
+                </b>
                 </tr>
             </thead>
             <tbody>
@@ -46,4 +51,8 @@
             </tbody>
         </table>
     </body>
+    <footer>
+        <i><p style="color: green;"> {% url 'infectious-history' i.id %} SEIR-V report | Dengue</p></i>
+        
+    </footer>
 </html>
