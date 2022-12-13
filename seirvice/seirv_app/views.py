@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, InfectiousDiseaseForm, DengueForm
 from .seirv import infectious_disease, dengue
+from .models import InfectiousDisease, Dengue
 
 
 # Create your views here.
@@ -14,7 +15,14 @@ def home(request):
     return render(request, 'simulation.html')
 
 def history(request):
-    return render(request, 'history.html')
+    infectious_history = InfectiousDisease.objects.filter(user=request.user.id).order_by('-id')
+    dengue_history = Dengue.objects.filter(user=request.user.id).order_by('-id')
+
+    data = {
+        'infectious_history': infectious_history,
+        'dengue_history': dengue_history
+    }
+    return render(request, 'try-history.html', context=data)
 
 def signup(request):
     form = UserForm()
