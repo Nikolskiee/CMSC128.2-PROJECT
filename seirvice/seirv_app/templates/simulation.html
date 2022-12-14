@@ -174,8 +174,10 @@
         </div>
         <div class="row">
           <div class="col-lg-3">
+			{% if request.user.profession == 'Hospital Staff' %}
             <span class="input-label label nopadding">Incubation period (in days)</span>
-                {{form.t_incubation}}
+            {{form.t_incubation}}
+			{% endif %}
           </div>
           <div class="col-lg-3">
             <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
