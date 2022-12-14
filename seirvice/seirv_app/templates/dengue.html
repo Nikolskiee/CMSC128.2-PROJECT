@@ -153,7 +153,7 @@
   </nav>
 
   <form action="" method="post">
-    <div class="container" style="margin-top: 30px; padding: 20px; background-color: #edf8fb;">
+    <div class="container" style="width: 75%; margin-top: 30px; padding: 20px; background-color: #edf8fb;">
       <h3 style="font-weight: bolder;">INFECTIOUS DISEASE MODEL FOR DENGUE</h3>
       <hr>
         {% csrf_token %}
@@ -239,7 +239,7 @@
   <br><br><br>
 
   <div class="container" style="width: 75%">
-    <div class="row">
+    <div class="row" >
       <div class="col-6">
         <h2>Simulation Results</h2>
       </div>
@@ -252,15 +252,15 @@
       </div>
     </div>
 
-    <hr><br>
+    <br>
 
-    <div class="row">
+    <div class="row" style="border: 2px solid #edf8fb;">
       <div class="col-7">
         {% autoescape off %}
         {{ plot_div }}
         {% endautoescape %}
       </div>
-      <div class="col-5" style="max-height: clamp(60vh,60vh,100vh); overflow: auto;">
+      <div class="col-5" style="max-height: clamp(80vh,80vh,100vh); overflow: auto;">
         <table class="table table-hover" style="width: 100%;">
           <thead class=" sticky-top table-light">
               <tr>
