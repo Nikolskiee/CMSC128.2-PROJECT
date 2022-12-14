@@ -82,7 +82,7 @@ def infectiousDisease(request, pk=''):
         context = infectious_disease(params)
         context.update({"form" : form})
         context.update({'hide_simulate': True})
-        context.update({'pk': pk})
+        context.update({'pk': pk })
         return render(request, 'simulation.html', context=context)
 
     form = InfectiousDiseaseForm()
@@ -174,61 +174,62 @@ def dengueDisease(request, pk=''):
     return render(request, 'dengue.html', data)
 
 @login_required(login_url='/login')
-def download_pdf(request, disease, pk):
-    if disease == 'infectious':
-        data_inst = InfectiousDisease.objects.get(id=pk)
-        params = {
-                'N_in' : data_inst.N_in,
-                't_duration' : data_inst.t_duration,
-                'R0_input' : data_inst.R0_input,
-                't_incubation' : data_inst.t_incubation,
-                't_infection' : data_inst.t_infection,
-                'E_in' : data_inst.E_in,
-                'I_in' : data_inst.I_in,
-                'R_in' : data_inst.R_in,
-                'v_eff' : data_inst.v_eff,
-                'mask_use' : data_inst.mask_use
+def download_infectious_pdf(request, pk):
+    data_inst = InfectiousDisease.objects.get(id=pk)
+    params = {
+            'N_in' : data_inst.N_in,
+            't_duration' : data_inst.t_duration,
+            'R0_input' : data_inst.R0_input,
+            't_incubation' : data_inst.t_incubation,
+            't_infection' : data_inst.t_infection,
+            'E_in' : data_inst.E_in,
+            'I_in' : data_inst.I_in,
+            'R_in' : data_inst.R_in,
+            'v_eff' : data_inst.v_eff,
+            'mask_use' : data_inst.mask_use
+    }
+    context = infectious_disease(params, image=True)
+    context.update({'title': 'Infectious Disease Model for Coronavirus, Influenza, and Measles'})
+    context.update({'infectious_disease': data_inst})
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="simulation_output.pdf"'
+    template_path = 'pdf_template_infectious.html'
+    template = get_template(template_path)
+    html = template.render(context)
+    pdf = pisa.CreatePDF(html, dest=response)
+
+    if not pdf.err:
+        return response
+    return request
+
+@login_required(login_url='/login')
+def download_dengue_pdf(request, pk):
+    data_inst = Dengue.objects.get(id=pk)
+    params = {
+            'N_h' : data_inst.N_h,
+            'N_v' : data_inst.N_v,
+            't_duration' : data_inst.t_duration,
+            'bite_n' : data_inst.bite_n,
+            'bv_input' : data_inst.bv_input,
+            'bh_input' : data_inst.bh_input,
+            'uv_input' : data_inst.uv_input,
+            'h_recov_input' : data_inst.h_recov_input,
+            'Ih_in' : data_inst.Ih_in,
+            'Rh_in' : data_inst.Rh_in,
+            'Iv_in' : data_inst.Iv_in
         }
-        context = infectious_disease(params, image=True)
-        context.update({'title': 'Infectious Disease Model for Coronavirus, Influenza, and Measles'})
-        context.update({'infectious_disease': data_inst})
-        response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'filename="simulation_output.pdf"'
-        template_path = 'pdf_template_infectious.html'
-        template = get_template(template_path)
-        html = template.render(context)
-        pdf = pisa.CreatePDF(html, dest=response)
+    context = dengue(params, image=True)
+    context.update({'title': 'Infectious Disease Model for Dengue'})
+    context.update({'dengue_disease': data_inst})
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="simulation_output.pdf"'
+    template_path = 'pdf_template_dengue.html'
+    template = get_template(template_path)
+    html = template.render(context)
+    pdf = pisa.CreatePDF(html, dest=response)
 
-        if not pdf.err:
-            return response
-
-    if disease == 'dengue':
-        data_inst = Dengue.objects.get(id=pk)
-        params = {
-                'N_h' : data_inst.N_h,
-                'N_v' : data_inst.N_v,
-                't_duration' : data_inst.t_duration,
-                'bite_n' : data_inst.bite_n,
-                'bv_input' : data_inst.bv_input,
-                'bh_input' : data_inst.bh_input,
-                'uv_input' : data_inst.uv_input,
-                'h_recov_input' : data_inst.h_recov_input,
-                'Ih_in' : data_inst.Ih_in,
-                'Rh_in' : data_inst.Rh_in,
-                'Iv_in' : data_inst.Iv_in
-            }
-        context = dengue(params, image=True)
-        context.update({'title': 'Infectious Disease Model for Dengue'})
-        context.update({'dengue_disease': data_inst})
-        response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'filename="simulation_output.pdf"'
-        template_path = 'pdf_template_dengue.html'
-        template = get_template(template_path)
-        html = template.render(context)
-        pdf = pisa.CreatePDF(html, dest=response)
-
-        if not pdf.err:
-            return response
+    if not pdf.err:
+        return response
     return request
 
 def about(request):

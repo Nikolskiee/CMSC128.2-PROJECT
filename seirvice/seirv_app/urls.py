@@ -24,7 +24,8 @@ urlpatterns = [
     path('infectious/<pk>', views.infectiousDisease, name='infectious-history'),
     path('dengue/', views.dengueDisease, name='dengue'),
     path('dengue/<pk>', views.dengueDisease, name='dengue-history'),
-    path('download/<disease>/<pk>', views.download_pdf, name='download_pdf'),
+    path('download/infectious/<pk>', views.download_infectious_pdf, name='download_infectious_pdf'),
+    path('download/dengue/<pk>', views.download_dengue_pdf, name='download_dengue_pdf'),
     path('about/', views.about, name='about'),
     path('dashboard/', views.dashboard, name='dashboard')
 ]

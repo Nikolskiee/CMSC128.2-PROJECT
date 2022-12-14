@@ -244,7 +244,11 @@
         <h2>Simulation Results</h2>
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <a href="" class="btn btn-primary" style="text-align: end;">View as PDF</a>
+        {% if hide_simulate %}
+        <a href="{% url 'download_dengue_pdf' pk %}" class="btn btn-danger" style="text-align: end;">View as PDF</a>
+        {% else %}
+        <a href="{% url 'history' %}" class="btn btn-primary" style="text-align: end;">Go to History</a>
+        {% endif%}
       </div>
     </div>
 
