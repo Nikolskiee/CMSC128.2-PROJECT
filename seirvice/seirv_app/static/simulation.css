@@ -242,6 +242,9 @@
 .simulation-container07 {
   border-width: 0px;
 }
+th, td {
+  border-color: #96D4D4;
+}
 .simulation-container08 {
   flex: 0 0 auto;
   width: 60vw;

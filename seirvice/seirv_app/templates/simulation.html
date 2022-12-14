@@ -6,6 +6,7 @@
   <title>SEIR-V</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
+  <link rel="icon" href="\static\ico.png" type="image/icon type">
 
   <style data-tag="reset-style-sheet">
     html {
@@ -66,6 +67,8 @@
     [type="submit"] {
       -webkit-appearance: button;
     }
+
+
 
     button::-moz-focus-inner,
     [type="button"]::-moz-focus-inner,
@@ -228,22 +231,24 @@
           {{ plot_seirv }}
         {% endautoescape %}
       </div>
-      <div class="col-lg-6">
-        <table>
+      <div class="col"></div>
+      <div class="col-lg-3 rounded align-items-end" style="z-index: 1; background-color: rgb(165, 253, 222); opacity: 75%; text-align: center;">
+        <br>
+        <table style=" width: 100%; border: 1px teal; border-collapse: collapse; padding: 2px; text-align: center;">
           <thead>
-            <tr>
-              <th>S</th>
-              <th>E</th>
-              <th>I</th>
-              <th>R</th>
-              <th>V</th>
+            <tr style="border: 2px solid teal; background-color: teal;">
+              <th>  S </th>
+              <th>  E </th>
+              <th>  I </th>
+              <th>  R </th>
+              <th>  V </th>
               <th>Days</th>
             </tr>
           </thead>
           <tbody>
             {% if table_seirv %}
             {% for i in table_seirv %}
-            <tr>
+            <tr style="border: 2px solid teal;">
               <td>{{i.S}}</td>
               <td>{{i.E}}</td>
               <td>{{i.I}}</td>
@@ -257,16 +262,19 @@
         </table>
       </div>
     </div>
+    <br>
     <div class="row">
       <div class="col-lg-6">
         {% autoescape off %}
           {{ plot_seir }}
         {% endautoescape %}
       </div>
-      <div class="col-lg-6">
-        <table>
+      <div class="col"></div>
+      <div class="col-lg-3 rounded align-items-end" style="z-index: 1; background-color: rgb(165, 253, 222); opacity: 75%; text-align: center;">
+        <br>
+        <table style=" width: 100%; border: 1px teal; border-collapse: collapse; padding: 2px; text-align: center;">
           <thead>
-            <tr>
+            <tr style="border: 2px solid teal; background-color: teal;">
               <th>S</th>
               <th>E</th>
               <th>I</th>
@@ -277,7 +285,7 @@
           <tbody>
             {% if table_seir %}
             {% for i in table_seir %}
-            <tr>
+            <tr style="border: 2px solid teal;">
               <td>{{i.S}}</td>
               <td>{{i.E}}</td>
               <td>{{i.I}}</td>
