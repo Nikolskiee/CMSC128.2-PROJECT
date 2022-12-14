@@ -57,7 +57,7 @@ def infectious_disease(data, image=False):
 
     herd_im = round(model.herd_im(), 2) # Vaccine Coverage to achieve herd immunity. Hindi ito input and need itong ipakita sa frontend.
     
-    cov_val = herd_im # ito ay input from the form, vaccine coverage rin, default value yung herd_im 
+    cov_val = float(data['cov_val']) # ito ay input from the form, vaccine coverage rin, default value yung herd_im 
 
     y_in = model.initial_state_seirv(
         E_in=E_in,

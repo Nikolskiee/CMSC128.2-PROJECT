@@ -188,7 +188,8 @@ def download_infectious_pdf(request, pk):
             'I_in' : data_inst.I_in,
             'R_in' : data_inst.R_in,
             'v_eff' : data_inst.v_eff,
-            'mask_use' : data_inst.mask_use
+            'mask_use' : data_inst.mask_use,
+            'cov_val' : data_inst.cov_val
     }
     context = infectious_disease(params, image=True)
     context.update({'title': 'Infectious Disease Model for Coronavirus, Influenza, and Measles'})
