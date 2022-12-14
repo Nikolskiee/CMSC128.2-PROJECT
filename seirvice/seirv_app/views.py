@@ -10,8 +10,11 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 import io
 
-
+@login_required(login_url='/welcome')
 def home(request):
+    return render(request, 'dashboard.html')
+
+def welcome(request):
     return render(request, 'index.html')
 
 @login_required(login_url='/login')
