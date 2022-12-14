@@ -14,21 +14,13 @@
 </head>
 
 <body class="beige">
-    <nav class="navbar navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <!-- <img src="assets/logo.png" alt="" width="70" height="24" class="d-inline-block align-text-top"> -->
-                SEIR-V
-            </a>
-        </div>
-    </nav>
-    <div class="container" style="margin-top: -40px;">
-        <div class=" row">
-            <div class="col-lg-6" id="fade-in">
-            <!--    <img src="{% static 'images/signupKitty.png' %}" id="spaced-up-mid" alt="" width="450px" align="right"> -->
-            </div>
-            <div class="col-lg-6" id="spaced-up-large" ">
-                <h1 id=" slide-in-left">Enter new password</h1>
+	<div class="container" style="margin-left: 0; padding-left: 0;">
+		<div class="row">
+			<div class="col-md-7 d-none d-xl-block">
+			<img src = "{% static 'doctor2-600w.png' %}" height="auto">
+			</div>
+			<div class="col-md-5 align-self-center">
+				<h1 id=" slide-in-left">Enter new password</h1>
 				<p>Please enter your new password twice so we can verify you typed it in correctly.</p>
                 <br>
 				<div>
@@ -62,13 +54,13 @@
 		
 						{% endfor %}
 						<div class="d-grid gap-2 col-2 mx-auto">
-							<button type="submit" class="btn btn-primary" style="margin-bottom: 10px">Save</button>
+							<button type="submit" class="btn btn-primary" style="margin-top: 10px">Save</button>
 						</div>
 					</form>
 				</div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
     <!-- SCROLL ANIMATION -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
