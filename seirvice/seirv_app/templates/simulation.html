@@ -175,26 +175,41 @@
                 {{form.R0_input}}
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-3">
-			{% if request.user.profession == 'Hospital Staff' %}
-            <span class="input-label label nopadding">Incubation period (in days)</span>
-            {{form.t_incubation}}
-			{% endif %}
+        {% if request.user.profession == 'Hospital Staff' %}
+          <div class="row">
+            <div class="col-lg-3">
+              <span class="input-label label nopadding">Incubation period (in days)</span>
+              {{form.t_incubation}}
+            </div>
+            <div class="col-lg-3">
+              <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
+                  {{form.t_infection}}
+            </div>
+            <div class="col-lg-3">
+              <span class="input-label label nopadding">Vaccine efficacy</span>
+                  {{form.v_eff}}
+            </div>
+            <div class="col-lg-3">
+              <span class="input-label label nopadding">Mask use?</span>
+                  {{form.mask_use}}
+            </div>
           </div>
-          <div class="col-lg-3">
-            <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
-                {{form.t_infection}}
+        {% else %}
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
+                  {{form.t_infection}}
+            </div>
+            <div class="col-lg-4">
+              <span class="input-label label nopadding">Vaccine efficacy</span>
+                  {{form.v_eff}}
+            </div>
+            <div class="col-lg-4">
+              <span class="input-label label nopadding">Mask use?</span>
+                  {{form.mask_use}}
+            </div>
           </div>
-          <div class="col-lg-3">
-            <span class="input-label label nopadding">Vaccine efficacy</span>
-                {{form.v_eff}}
-          </div>
-          <div class="col-lg-3">
-            <span class="input-label label nopadding">Mask use?</span>
-                {{form.mask_use}}
-          </div>
-        </div>
+        {% endif %}
         <hr>
         <div class="row align-items-end">
           <div class="col-lg-4">
@@ -230,7 +245,97 @@
     </div>
   </form>
 
-  <div class="container">
+  <br><br><br>
+
+  <div class="container" style="width: 75%">
+    <div class="row">
+      <div class="col-9">
+        <h2>Simulation Results for SEIR and SEIR-V Model</h2>
+      </div>
+      <div class="col-3 d-flex justify-content-end">
+        <a href="" class="btn btn-primary" style="text-align: end;">View as PDF</a>
+      </div>
+    </div>
+
+    <hr><br>
+
+    <div class="row">
+      <div class="col-7">
+        {% autoescape off %}
+        {{ plot_seir }}
+        {% endautoescape %}
+      </div>
+      <div class="col-5" style="max-height: clamp(60vh,60vh,100vh); overflow: auto;">
+        <table class="table table-hover" style="width: 100%;">
+          <thead class=" sticky-top table-light">
+              <tr>
+                <th>S</th>
+                <th>E</th>
+                <th>I</th>
+                <th>R</th>
+                <th>Days</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% if table_seir %}
+              {% for i in table_seir %}
+                <tr>
+                  <td>{{i.S}}</td>
+                  <td>{{i.E}}</td>
+                  <td>{{i.I}}</td>
+                  <td>{{i.R}}</td>
+                  <td>{{i.Days}}</td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="width: 75%">
+    <hr><br>
+    <div class="row">
+      <div class="col-7">
+        {% autoescape off %}
+        {{ plot_seirv }}
+        {% endautoescape %}
+      </div>
+      <div class="col-5" style="max-height: clamp(60vh,60vh,100vh); overflow: auto;">
+        <table class="table table-hover" style="width: 100%;">
+          <thead class=" sticky-top table-light">
+              <tr>
+                <th>  S </th>
+                <th>  E </th>
+                <th>  I </th>
+                <th>  R </th>
+                <th>  V </th>
+                <th>Days</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% if table_seirv %}
+              {% for i in table_seirv %}
+                <tr>
+                  <td>{{i.S}}</td>
+                  <td>{{i.E}}</td>
+                  <td>{{i.I}}</td>
+                  <td>{{i.R}}</td>
+                  <td>{{i.V}}</td>
+                  <td>{{i.Days}}</td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br><br>
+  </div>
+
+
+  <!-- <div class="container">
     <div class="row">
       <div class="col-lg-6">
         {% autoescape off %}
@@ -304,7 +409,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> -->
 
         <!-- <div class="simulation-container03">
           <h1 class="simulation-text04">Disease Name</h1>
