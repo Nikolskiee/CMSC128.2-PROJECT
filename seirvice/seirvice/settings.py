@@ -12,22 +12,23 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+from environs import Env  # new
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Loads environment variables
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+env = Env()  # new
+env.read_env()  # new
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-elwn9e82so5b=38el1kz=lzy%$0pmlgmndchx#^5lkus3mbx7g'
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False) 
 
 ALLOWED_HOSTS = []
 
@@ -43,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    'seirv_app'
+    'seirv_app',
+    "whitenoise.runserver_nostatic" # new
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware"  # new
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ROOT_URLCONF = 'seirvice.urls'
 
@@ -82,14 +89,7 @@ WSGI_APPLICATION = 'seirvice.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.environ.get('DB_NAME', 'seirvice_db'),
-        'USER': os.environ.get('DB_USER', 'seirvice_user'),
-        'PASSWORD': os.environ.get('DB_PASS', 'password'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', 5432)
-    }
+    "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
 
 
@@ -151,4 +151,7 @@ EMAIL_HOST_PASSWORD = "hzhddefoucnsvxfl"
 CORS_ORIGIN_ALLOW_ALL = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://*.lhr.life']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.lhr.life',
+    'https://*.fly.dev'
+]
