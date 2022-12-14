@@ -34,9 +34,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 justify-content-center">
-                    <h1 style="font-size:100px;">SEIRV</h1>
-                    <hr style="width:300px; height: 12px;">
-                    <h4 style="color:darkgrey">Infectious disease forecasting tool for health facilities and medical schools</h4>
+                    <h1 style="font-size:75px;">Welcome!</h1>
+                    <hr>
+                    <p style="color:darkgrey; font-size: 24px;">
+                        This web application offers infectious disease forecasting tools for health facilities and medical schools.
+                    </p>
                     <br>
                     {% if request.user.is_authenticated %}
                     <a href="{% url 'home' %}" class="btn btn-primary" style="font-size:large;width:200px; vertical-align:middle"><b>GET STARTED</b></a>

@@ -60,7 +60,7 @@ def signin(request):
 @login_required(login_url='/login')
 def signout(request):
     logout(request)
-    return redirect('/login')
+    return redirect('/welcome')
 
 @login_required(login_url='/login')
 def infectiousDisease(request, pk=''):

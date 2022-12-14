@@ -8,44 +8,55 @@
     <title>SEIRVICE</title>
 </head>
   <body>
-    <div class="container" style="margin-left: 0; padding-left: 0;">
-      <div class="row">
-        <div class="col-md-7 d-none d-xl-block">
-          <img src = "{% static 'doctor2-600w.png' %}" height="100%">
+    <div style="margin-left: 0; padding-left: 0; height:100%;">
+      <div class="row justify-content-center" style="margin: 0; padding: 0; height:100%;">
+        <div class="col-md-6 d-none d-xl-block"
+          style="background-image: url({% static 'Doctor2.png' %}); background-size: cover;">
+          <!-- <img src = "{% static 'doctor2-600w.png' %}"> -->
         </div>
-        <div class="col-md-5 align-self-center">
+        <div class="col-md-6 align-self-center" style=" padding: 100px;">
+          <div class="row" style="margin-bottom: 30px;">
+            <a href="{% url 'home'%}" style="text-align: center;"><img src ="{% static 'logo-1500h.png' %}" width="50%"></a>
+          </div>
+          
           <form method="post">
             {% csrf_token %}
-            <div class="form-group pb-2">
+            <div class="form-group pb-2" style="margin-bottom: 12px;">
               <label for="username">Username</label>
               <input type="text" class="form-control" id="username" name="username" required placeholder="Enter username">
             </div>
-            <div class="form-group pb-2">
+            <div class="form-group pb-2" style="margin-bottom: 12px;">
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
             </div>
-            <div class="pb-2">
+            <div class="pb-2" style="margin-bottom: 12px;">
               <a href="{% url 'reset_password' %}" class="login-text5 forgotPass">Forgot My Password</a>
             </div>
-			{% for message in messages %}
-				{% if 'success' == message.tags %}
-					<!-- Alert Box -->
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<strong>Success!</strong> {{message | striptags}}
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-				{% else %}
-					<!-- Alert Box -->
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<strong>Error!</strong> {{message | striptags}}
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-				{% endif %}
-			{% endfor %}
-            <button type="submit"  name='login' class="btn btn-primary">Login</button>
-            <br>
-            <br>
-            <p>No account yet? <a href="{% url 'signup' %}">Sign up</a></p>
+            {% for message in messages %}
+              {% if 'success' == message.tags %}
+                <!-- Alert Box -->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success!</strong> {{message | striptags}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% else %}
+                <!-- Alert Box -->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Error!</strong> {{message | striptags}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endfor %}
+            <div class="row justify-content-center">
+              <div class="col-6 align-items-center" style="text-align: center;">
+                <button type="submit" name='login' class="btn btn-primary" style="width: 100%; padding: 10px 30px">Login</button>
+                <br>
+                <br>
+                <p>No account yet? <a href="{% url 'signup' %}">Sign up</a></p>
+              </div>
+              
+            </div>
+            
           </form>
         </div>
       </div>
