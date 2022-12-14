@@ -234,5 +234,6 @@ def download_pdf(request, disease, pk):
 def about(request):
     return render(request, 'about.html')
 
+@login_required(login_url='/login')
 def dashboard(request):
     return render(request, 'dashboard.html')

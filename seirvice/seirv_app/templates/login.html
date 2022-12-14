@@ -27,6 +27,21 @@
             <div class="pb-2">
               <a href="{% url 'reset_password' %}" class="login-text5 forgotPass">Forgot My Password</a>
             </div>
+			{% for message in messages %}
+				{% if 'success' == message.tags %}
+					<!-- Alert Box -->
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Success!</strong> {{message | striptags}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% else %}
+					<!-- Alert Box -->
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Error!</strong> {{message | striptags}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% endif %}
+			{% endfor %}
             <button type="submit"  name='login' class="btn btn-primary">Login</button>
             <br>
             <br>

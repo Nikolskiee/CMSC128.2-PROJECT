@@ -133,24 +133,28 @@
 <body>
   <link rel="stylesheet" type="text/css" href="{% static 'simulation.css' %}" />
   
-  <nav class="navbar navbar-expand-lg navbar-light p-4" style="background-color:white; border-bottom: 1px solid #2a7fff;">
-    <div class="col-md-2">
-        <img src ="{% static 'logo-1500h.png' %}" height="40px">
+  <nav class="navbar navbar-expand-lg navbar-light p-4" style="background-color:white;  border-bottom: 1px solid #2a7fff;">
+    <div class="col-md-2 d-flex justify-content-left">
+        <a href="{% url 'home'%}"><img src ="{% static 'logo-1500h.png' %}" height="40px"></a>
     </div>
-    <div class="col-md-8 d-flex justify-content-center" style="padding-left: 10px">
-        <a href="{% url 'dashboard'%}" class="navbar-brand">Dashboard</a>
-        <a href="{% url 'history'%}" class="navbar-brand">History</a>
-        <a href="{% url 'about'%}" class="navbar-brand">About</a>
+    <div class="col-md-8 d-flex justify-content-center">
+        <a href="{% url 'dashboard'%}" class="navbar-brand" style="margin: 0px 20px;">Dashboard</a>
+        <a href="{% url 'history'%}" class="navbar-brand" style="margin: 0px 20px;">History</a>
+        <a href="{% url 'about'%}" class="navbar-brand" style="margin: 0px 20px;">About</a>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 d-flex justify-content-end">
         {% if request.user.is_authenticated %}
-        <a href="{% url 'logout'%}" class="navbar-brand">Logout</a>
+        <a href="{% url 'logout'%}" class="navbar-brand" >Logout</a>
         {% else %}
         <a href="{% url 'login'%}" class="navbar-brand">Login</a>
-        <a href="{% url 'signup'%}" class="navbar-brand">Register</a>
+        <a href="{% url 'signup'%}" 
+            class="navbar-brand" 
+            style="background-color: #2a7fff; border-radius: 5px; height: 40px; padding-left: 12px; padding-right: 12px; color: white;">
+            Register
+        </a>
         {% endif %}
     </div>
-</nav>
+  </nav>
 
   <form action="" method="post">
     <div class="container" style="margin-top: 30px; padding: 20px; background-color: #edf8fb;">
@@ -173,8 +177,10 @@
         </div>
         <div class="row">
           <div class="col-lg-3">
+			{% if request.user.profession == 'Hospital Staff' %}
             <span class="input-label label nopadding">Incubation period (in days)</span>
-                {{form.t_incubation}}
+            {{form.t_incubation}}
+			{% endif %}
           </div>
           <div class="col-lg-3">
             <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
