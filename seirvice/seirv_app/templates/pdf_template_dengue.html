@@ -3,7 +3,7 @@
     <head>
         <style>
             table {
-                border: 1px solid teal;
+                border: 1px solid black;
                 border-collapse: collapse;
                 padding: 2px;
                 text-align: center;
@@ -22,9 +22,9 @@
     <body>
         {{title}}
         <h1>Ross Macdonald Model Projection</h1>
-        <img src='{{plot_div}}' style="border: 2px; border-color: teal; border-radius: 10%;">
+        <img src='{{plot_div}}'>
         <table>
-            <thead style="color: rgb(0, 0, 0); background-color: teal;">
+            <thead>
                 <tr><b>
                     <th>Sh</th>
                     <th>Ih</th>
@@ -52,7 +52,7 @@
         </table>
     </body>
     <footer>
-        <i><p style="color: green;"> {{dengue_disease.created_at}} SEIR-V report | Dengue</p></i>
+        <i><p style="color: #2a7fff;"> {{dengue_disease.created_at}} SEIR-V report | Dengue</p></i>
         
     </footer>
 </html>
