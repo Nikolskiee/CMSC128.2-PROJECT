@@ -161,6 +161,26 @@
       <h3 style="font-weight: bolder;">INFECTIOUS DISEASE MODEL FOR CORONAVIRUS, INFLUENZA, MEASLES</h3>
       <hr>
         {% csrf_token %}
+        {% if request.user.profession == 'Hospital Staff' %}
+        <div class="row" id="spaced-up-large">
+          <div class="col-lg-3" >
+              <span class="input-label label nopadding">N (host population)</span>
+                {{form.N_in}}
+          </div>
+          <div class="col-lg-3">
+              <span class="input-label label nopadding">Simulation duration (in days)</span>
+                {{form.t_duration}}
+          </div>
+          <div class="col-lg-3">
+              <span class="input-label label nopadding">Basic Reproduction Number (R0)</span>
+                {{form.R0_input}}
+          </div>
+          <div class="col-lg-3">
+            <span class="input-label label nopadding">Incubation period (in days)</span>
+            {{form.t_incubation}}
+          </div>
+        </div>
+        {% else %}
         <div class="row" id="spaced-up-large">
           <div class="col-lg-4" >
               <span class="input-label label nopadding">N (host population)</span>
@@ -175,42 +195,29 @@
                 {{form.R0_input}}
           </div>
         </div>
-        {% if request.user.profession == 'Hospital Staff' %}
-          <div class="row">
-            <div class="col-lg-3">
-              <span class="input-label label nopadding">Incubation period (in days)</span>
-              {{form.t_incubation}}
-            </div>
-            <div class="col-lg-3">
-              <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
-                  {{form.t_infection}}
-            </div>
-            <div class="col-lg-3">
-              <span class="input-label label nopadding">Vaccine efficacy</span>
-                  {{form.v_eff}}
-            </div>
-            <div class="col-lg-3">
-              <span class="input-label label nopadding">Mask use?</span>
-                  {{form.mask_use}}
-            </div>
-          </div>
-        {% else %}
-          <div class="row">
-            <div class="col-lg-4">
-              <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
-                  {{form.t_infection}}
-            </div>
-            <div class="col-lg-4">
-              <span class="input-label label nopadding">Vaccine efficacy</span>
-                  {{form.v_eff}}
-            </div>
-            <div class="col-lg-4">
-              <span class="input-label label nopadding">Mask use?</span>
-                  {{form.mask_use}}
-            </div>
-          </div>
         {% endif %}
+
+        <div class="row">
+          <div class="col-lg-3">
+            <span class="input-label label nopadding">Symptomatic Infection period (in days)</span>
+                {{form.t_infection}}
+          </div>
+          <div class="col-lg-3">
+            <span class="input-label label nopadding">Vaccine efficacy</span>
+                {{form.v_eff}}
+          </div>
+          <div class="col-lg-3">
+            <span class="input-label label nopadding">Vaccine coverage</span>
+                {{form.cov_val}}
+          </div>
+          <div class="col-lg-3">
+            <span class="input-label label nopadding">Mask use?</span>
+                {{form.mask_use}}
+          </div>
+        </div>
+        
         <hr>
+
         <div class="row align-items-end">
           <div class="col-lg-4">
             <span class="input-label label nopadding">Initial exposed population</span>
