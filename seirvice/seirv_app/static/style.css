@@ -35,6 +35,15 @@
   --dl-space-space-oneandhalfunits: 24px;
 }
 
+.registerBtn{
+  background-color: #2a7fff; 
+  height: 40px; 
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+
 .resultsButton {
   width: 80%;
   padding: 10px;
@@ -238,8 +247,6 @@
 .div-bg{
   background-image: url("./static/bg1-1500w.png");
 }
-
-
 
 
 
