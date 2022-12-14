@@ -27,6 +27,7 @@ class InfectiousDisease(models.Model):
 	v_eff = models.FloatField()
 	mask_use = models.CharField(max_length=100, choices=MASK_CHOICES, default='No')
 	created_at = models.DateTimeField(auto_now_add=True)
+	cov_val = models.FloatField()
 
 
 class Dengue(models.Model):

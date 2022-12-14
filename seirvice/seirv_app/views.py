@@ -77,7 +77,8 @@ def infectiousDisease(request, pk=''):
                 'I_in' : history_inst.I_in,
                 'R_in' : history_inst.R_in,
                 'v_eff' : history_inst.v_eff,
-                'mask_use' : history_inst.mask_use
+                'mask_use' : history_inst.mask_use,
+                'cov_val' : history_inst.cov_val
             }
         context = infectious_disease(params)
         context.update({"form" : form})
@@ -104,7 +105,8 @@ def infectiousDisease(request, pk=''):
                 'I_in' : request.POST.get('I_in'),
                 'R_in' : request.POST.get('R_in'),
                 'v_eff' : request.POST.get('v_eff'),
-                'mask_use' : request.POST.get('mask_use')
+                'mask_use' : request.POST.get('mask_use'),
+                'cov_val' : request.POST.get('cov_val')
             }
             context = infectious_disease(params)
             context.update({"form" : form})
